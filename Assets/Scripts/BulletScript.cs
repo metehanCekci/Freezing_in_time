@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         // Check if the bullet needs to be destroyed after a delay
-        if ((timer += Time.deltaTime) > deleteDelay)
+        if ((timer += Time.deltaTime) > deleteDelay || bulletHp<=0)
         {
             Destroy(gameObject);
         }
@@ -39,12 +39,6 @@ public class BulletScript : MonoBehaviour
         {
             // Move the bullet forward
             transform.position += (Vector3)direction * Time.deltaTime * speed;
-        }
-
-        // Destroy the bullet if its health reaches zero
-        if (bulletHp <= 0)
-        {
-            Destroy(gameObject);
         }
 
         // Handle spread shot behavior if enabled and not yet spread
