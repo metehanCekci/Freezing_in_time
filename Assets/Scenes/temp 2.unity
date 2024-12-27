@@ -1974,6 +1974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guiElements: {fileID: 1650858862}
   ctrlElements: {fileID: 336784226}
+  settingmenu: {fileID: 0}
   fadeImage: {fileID: 1974205351}
   fadeDuration: 0.3
 --- !u!114 &206236309

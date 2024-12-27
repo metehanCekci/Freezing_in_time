@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b208a4961ffdfcd48871afc81f8a7d84
+guid: 774d597b319b6974887affdbe9b41e17
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,9 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BOSSHAND
+  - name: bossyumruk
     originalName: 
-    pivot: {x: 0.53543305, y: -0.19047618}
+    pivot: {x: 0.51111114, y: -0.47413793}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 127
-      height: 168
-    spriteID: 5ef52fa0502d76048ba45929834e6da9
+      width: 90
+      height: 116
+    spriteID: 7053106efcb330d44a60c6005fda800d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,21 +146,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 292717958
-    name: BOSSHAND
+    guid: -366765018
+    name: bossyumruk
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BOSSHAND
+    - name: bossyumruk
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 32
-        y: 32
-        width: 127
-        height: 168
-      spriteId: 5ef52fa0502d76048ba45929834e6da9
+        x: 54
+        y: 55
+        width: 90
+        height: 116
+      spriteId: 7053106efcb330d44a60c6005fda800d
     linkedCells: []
     parentIndex: -1
   platformSettings:
