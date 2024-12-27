@@ -19,6 +19,8 @@ MonoBehaviour:
   dependencies:
   - dependency: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 633859b2b58882d4291bbae50cd2f01c, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 7400000, guid: d9d0694ce7c699840810d3d50992690a, type: 2}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 3028dc075ba8c584d9bc7d1e0255e038, type: 3}
@@ -45,11 +47,7 @@ MonoBehaviour:
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 26663a5ec9987421996161615506b6c5, type: 3}
     instantiationMode: 1
-<<<<<<< Updated upstream
   - dependency: {fileID: 7400000, guid: 874db1ecd53262240934dd646f3eb2a1, type: 2}
-=======
-  - dependency: {fileID: -2253911629886400664, guid: 74a253087b8001646ad4766b506c6c59, type: 3}
->>>>>>> Stashed changes
     instantiationMode: 0
   - dependency: {fileID: 9100000, guid: 93366c7a6f3eef641bc6b39666262a16, type: 2}
     instantiationMode: 0
