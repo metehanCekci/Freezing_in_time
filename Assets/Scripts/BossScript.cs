@@ -1,53 +1,97 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
-    [Header("Kol Ayarlarý")]
-    public GameObject leftArm; // Sol kol nesnesi
-    public GameObject rightArm; // Sað kol nesnesi
-    public Transform leftArmBasePos; // Sol kolun baþlangýç pozisyonu
-    public Transform rightArmBasePos; // Sað kolun baþlangýç pozisyonu
-    public Transform playerTarget; // Oyuncu hedefi
-    public float speed = 5f; // Hareket hýzý
+    public bool handIsLeft = true;
 
-    public bool attacking = false; // Saldýrý durumu
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public Transform player; // Reference to the player transform
+    private Vector3 originalLeftHandPosition;
+    private Vector3 originalRightHandPosition;
+    private bool returnToPosition = false;
+    public bool followPlayer = false;
 
-    void Update()
+    private float moveSpeed = 5f; // Speed at which the left hand follows
+    private float slamDelay = 1f; // Time to wait before the attack is launched
+    private float slamDuration = 1f; // Time to wait before the hand returns
+    private bool isSlamAttacking = false; // Whether the attack is in progress
+
+    private void Awake()
     {
-        if (attacking)
+        // Cache the original position of the left hand
+        
+        
+            originalLeftHandPosition = leftHand.transform.parent.position;
+            originalRightHandPosition = rightHand.transform.parent.position;
+        RandomAttack();
+    }
+
+    private void FixedUpdate() {
+        if(followPlayer)
         {
-            // Saldýrý modunda kollarý oyuncuya doðru hareket ettir
-            MoveArmToTarget(leftArm, playerTarget.position);
-            MoveArmToTarget(rightArm, playerTarget.position);
+            if(handIsLeft)
+            {
+                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, new Vector3(player.transform.position.x, 3, 0), moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, new Vector3(player.transform.position.x, 3, 0), moveSpeed * Time.deltaTime);
+            }
+        }
+        if(returnToPosition)
+        {
+            if(handIsLeft)
+            {
+                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, originalLeftHandPosition, 1 * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, originalRightHandPosition, 1* moveSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public void RandomAttack()
+    {
+        int roll = Random.Range(0, 1); // Randomly pick 0 or 1 for the attack choice
+
+        if (roll == 0)
+        {
+            StartCoroutine("SlamAttack");
+        }
+    }
+
+    IEnumerator SlamAttack()
+    {
+        followPlayer = true;
+        yield return new WaitForSeconds(1f);
+        followPlayer = false;
+        yield return new WaitForSeconds(0.7f);
+
+        if (handIsLeft)
+        {
+            leftHand.GetComponent<Animator>().SetBool("isAttacking",true);
         }
         else
         {
-            // Saldýrý sona erdiðinde kollarý baþlangýç pozisyonlarýna geri döndür
-            MoveArmToTarget(leftArm, leftArmBasePos.position);
-            MoveArmToTarget(rightArm, rightArmBasePos.position);
+            rightHand.GetComponent<Animator>().SetBool("isAttacking",true);
         }
+
+        yield return new WaitForSeconds(2);
+        returnToPosition = true;
+        yield return new WaitForSeconds(1);
+        returnToPosition = false;
+
+        handIsLeft = !handIsLeft;
+
+        StartCoroutine("CoolDown");
     }
 
-    private void MoveArmToTarget(GameObject arm, Vector3 targetPosition)
+    IEnumerator CoolDown()
     {
-        arm.transform.position = Vector3.MoveTowards(arm.transform.position, targetPosition, speed * Time.deltaTime);
-
-        // Hedefe ulaþtýðýnda log ver
-        if (Vector3.Distance(arm.transform.position, targetPosition) < 0.1f)
-        {
-            Debug.Log($"{arm.name} hedefe ulaþtý: {targetPosition}");
-        }
-    }
-
-    public void StartAttack()
-    {
-        Debug.Log("Saldýrý baþlatýlýyor!");
-        attacking = true; // Saldýrý modunu etkinleþtir
-    }
-
-    public void EndAttack()
-    {
-        Debug.Log("Saldýrý sona erdi, kollar baþlangýç pozisyonlarýna dönüyor!");
-        attacking = false; // Saldýrý modunu devre dýþý býrak
+        yield return new WaitForSeconds(1);
+        RandomAttack();
     }
 }
