@@ -124,16 +124,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: tankman
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.53383464, y: -0.09859155}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 200
-      height: 200
+      y: 307
+      width: 133
+      height: 142
     spriteID: 923b34a8606193e409f8d5b653116531
     spriteBone: []
     spriteOutline: []
@@ -142,7 +142,70 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
+    uvTransform: {x: 4, y: 307}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.55214727, y: -0.07638889}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 163
+      height: 144
+    spriteID: d3b76e25669f753419bec983f219399c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.53383464, y: -0.090909086}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 156
+      width: 133
+      height: 143
+    spriteID: 78d1613807a479a49a86e9b339f10706
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 156}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.56565654, y: -0.09154929}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 145
+      y: 156
+      width: 99
+      height: 142
+    spriteID: 88fe80f9124da5f458a229b7b359d120
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 145, y: 156}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -152,15 +215,42 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: tankman
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 200
-        height: 200
+        x: 29
+        y: 14
+        width: 133
+        height: 142
       spriteId: 923b34a8606193e409f8d5b653116531
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 10
+        y: 11
+        width: 163
+        height: 144
+      spriteId: d3b76e25669f753419bec983f219399c
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 29
+        y: 13
+        width: 133
+        height: 143
+      spriteId: 78d1613807a479a49a86e9b339f10706
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 44
+        y: 13
+        width: 99
+        height: 142
+      spriteId: 88fe80f9124da5f458a229b7b359d120
     linkedCells: []
     parentIndex: -1
   platformSettings:
