@@ -12,6 +12,11 @@ public class Menu : MonoBehaviour
     // Flag to indicate if the fade is in progress
     private bool isFading = false;
 
+
+    [Header("Settings Section")]
+    [SerializeField] private GameObject settingGm;
+    
+
     // Load the level with fade effect
     public void LoadLevel()
     {
@@ -71,5 +76,10 @@ public class Menu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Settings(){
+        gameObject.SetActive(false);
+        settingGm.SetActive(true);
     }
 }
