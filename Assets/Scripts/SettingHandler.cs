@@ -5,8 +5,8 @@ public class SettingHandler : MonoBehaviour
 
     public Slider musicSlider, sfxSlider;
 
-    [Header("Main Menu Canvas")]
-    [SerializeField] private GameObject mainMenu;
+   
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void ToggleMusic(){
         AudioManager.Instance.ToggleMusic(); //buton tanıtırsak bu fonksiyonları onlara atayabiliriz
@@ -24,8 +24,5 @@ public class SettingHandler : MonoBehaviour
         AudioManager.Instance.SFXVolume(sfxSlider.value);
     }
 
-    public void Return(){
-        mainMenu.SetActive(true);
-        gameObject.SetActive(false);
-    }
+    
 }
