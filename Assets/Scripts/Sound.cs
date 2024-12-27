@@ -1,11 +1,11 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Sound : MonoBehaviour
+public class Sound
 {
 
-    public string name;
-    public AudioClip audio;
+    [SerializeField] public string name;
+    [SerializeField] public AudioClip clip;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

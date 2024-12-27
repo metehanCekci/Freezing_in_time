@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Music file not found!");
         }
         else{
-            //musicSource.clip = s.clip; 
+            musicSource.clip = s.clip; 
             musicSource.Play();
         }
     }
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("SFX file not found!");
         }
         else{
-            //sfxSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(s.clip);
         }
     }
 
