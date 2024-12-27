@@ -5,7 +5,6 @@ public class BossScript : MonoBehaviour
 {
     public GameObject controlledObject; // Hareket ettirilecek nesne
     public Transform targetObject; // Hedef nesne
-    public Transform startingPoint;
     public float speed = 3f; // Hareket hýzý
 
     private Animator animator;
@@ -18,7 +17,6 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        startingPoint = controlledObject.transform;
     }
 
     void Update()
@@ -72,7 +70,6 @@ public class BossScript : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown); // Cooldown süresi boyunca bekle
         isCooldown = false; // Cooldown sona erdi
         attack = false; // Yeni bir saldýrý için hazýr
-        controlledObject.transform.position = startingPoint.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
