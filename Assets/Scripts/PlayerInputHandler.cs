@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Threading;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class PlayerInputHandler : MonoBehaviour
 {
     [Header("Input Actions Asset")]
@@ -44,6 +46,12 @@ public class PlayerInputHandler : MonoBehaviour
     public bool EscapeTriggered { get; private set; }
 
     private bool isMobile;
+
+    [Header("Fade Elements")]
+    [SerializeField] private Image fadeImage; // The Image used for the fade effect
+    public float fadeDuration = 1f; // Duration for the fade effect
+
+    private bool isFading = false;
 
     void Awake()
     {
@@ -132,15 +140,72 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f; // Reset time scale
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
+        StartCoroutine(FadeAndRestartScene());
     }
 
     public void QuitGame()
     {
-        Time.timeScale = 1f; // Reset time scale
-        Application.Quit(); // Quit the application
-        Debug.Log("Game Quit"); // Useful for testing in the Editor
+        StartCoroutine(FadeAndQuitToMenu());
+    }
+
+    public void QuitToWindows()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
+
+
+    private IEnumerator FadeAndRestartScene()
+    {
+        Time.timeScale = 1;
+        isFading = true;
+
+        // Start the fade to black
+        fadeImage.gameObject.SetActive(true);
+        Color startColor = fadeImage.color;
+        startColor.a = 0f;
+        fadeImage.color = startColor;
+
+        // Fade out to black
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+            fadeImage.color = startColor;
+            yield return null;
+        }
+
+        // Once fade is complete, restart the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // Coroutine to handle the fade-out and scene transition to the main menu
+    private IEnumerator FadeAndQuitToMenu()
+    {
+        Time.timeScale = 1;
+        isFading = true;
+
+        // Start the fade to black
+        fadeImage.gameObject.SetActive(true);
+        Color startColor = fadeImage.color;
+        startColor.a = 0f;
+        fadeImage.color = startColor;
+
+        // Fade out to black
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+            fadeImage.color = startColor;
+            yield return null;
+        }
+
+        // Once fade is complete, load the main menu
+        SceneManager.LoadScene(0);
     }
     void OnEnable()
     {
