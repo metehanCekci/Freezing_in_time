@@ -98,38 +98,9 @@ void Start()
     StartCoroutine(ReduceTimeOverTime());
 }
 
-    private IEnumerator ReduceTimeOverTime()
-    {
-        while (timeAmount > 0) 
-        {
-            
-            if (timeAmount > 1)
-            {
-                yield return new WaitForSeconds(1); 
-                timeAmount--; 
-            }
-            else
-            {
-                
-                yield return new WaitForSeconds(0.1f); 
-                timeAmount -= 0.01f; 
+    
 
-                
-                bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
-            }
-
-            
-            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
-        }
-
-       
-        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
-        {
-            deathMenu.SetActive(true);
-            Time.timeScale = 0;
-            isDead = true;
-        }
-    }
+     
 
 
     void Update()
@@ -554,5 +525,34 @@ void ApplyMovement()
         Debug.Log("Player resurrected! Remaining resurrections: " + resurrection);
     }
 
-    
+    private IEnumerator ReduceTimeOverTime()
+    {
+        while (timeAmount > 0)
+        {
+            if (timeAmount > 96)
+            {
+                yield return new WaitForSeconds(1);
+                timeAmount--;
+            }
+            else
+            {
+                // Süre 1 saniyenin altına düştüğünde daha sık azalmaya başlar.
+                yield return new WaitForSeconds(0.01f);
+                timeAmount -= 0.01f;
+            }
+
+            // Zamanlayıcı arayüzünü güncelle.
+            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
+        }
+
+        // Eğer zaman dolmuşsa ve canlanma hakkı yoksa ölüm ekranını aç.
+        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+        {
+            deathMenu.SetActive(true);
+            Time.timeScale = 0;
+            isDead = true;
+        }
+    }
+
+
 }

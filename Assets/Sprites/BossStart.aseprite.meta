@@ -124,15 +124,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BossStart
     originalName: 
-    pivot: {x: -0.057142805, y: -0.088397786}
+    pivot: {x: 0.45588234, y: -0.088397786}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
+      x: 150
       y: 4
-      width: 70
+      width: 136
       height: 181
     spriteID: c01ad11562b6863449ced45e8d664b29
     spriteBone: []
@@ -142,7 +142,70 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
+    uvTransform: {x: 150, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.4637681, y: -0.06629834}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 138
+      height: 181
+    spriteID: d0b62e2ccbd00964c87c18882b9b085e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.45185184, y: -0.055248618}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 193
+      width: 135
+      height: 181
+    spriteID: 526a575f3d938c646928ecce6051a340
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 150, y: 193}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.4637681, y: -0.06629834}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 193
+      width: 138
+      height: 181
+    spriteID: d9f69162eb605fb468d888aa34f39e57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 193}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -152,15 +215,42 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: BossStart
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 104
+        x: 38
         y: 16
-        width: 70
+        width: 136
         height: 181
       spriteId: c01ad11562b6863449ced45e8d664b29
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 36
+        y: 12
+        width: 138
+        height: 181
+      spriteId: d0b62e2ccbd00964c87c18882b9b085e
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 39
+        y: 10
+        width: 135
+        height: 181
+      spriteId: 526a575f3d938c646928ecce6051a340
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 36
+        y: 12
+        width: 138
+        height: 181
+      spriteId: d9f69162eb605fb468d888aa34f39e57
     linkedCells: []
     parentIndex: -1
   platformSettings:
