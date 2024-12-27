@@ -7483,6 +7483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3319bb068922aeb449e1c478b2276668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledObject: {fileID: 0}
+  targetObject: {fileID: 0}
+  speed: 3
+  attackCooldown: 2
 --- !u!58 &696098200
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15586,6 +15590,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3319bb068922aeb449e1c478b2276668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledObject: {fileID: 0}
+  targetObject: {fileID: 0}
+  speed: 3
+  attackCooldown: 2
 --- !u!50 &1571627347
 Rigidbody2D:
   serializedVersion: 5
@@ -20980,6 +20988,10 @@ PrefabInstance:
     - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: fallMultiplier
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
+      propertyPath: gunOffsetOnLeft
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: movementJoystick
