@@ -56,7 +56,7 @@ public class Spawner : MonoBehaviour
             {
                 enemyHealth.hp = Mathf.CeilToInt(enemyHealth.hp*1.45f); // HP'yi iki katına çıkar
                 enemyHealth.exp = Mathf.CeilToInt(enemyHealth.exp*1.5f);
-                enemyHealth.bulletReward = Mathf.CeilToInt(enemyHealth.bulletReward*1.2f);
+                enemyHealth.timeReward = Mathf.CeilToInt(enemyHealth.timeReward*1.2f);
             }
         }
     }

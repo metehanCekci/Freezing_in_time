@@ -529,7 +529,7 @@ public class LevelUpSystem : MonoBehaviour
         {
             foreach (var item in spawner.GetComponent<Spawner>().enemies)
             {
-                item.GetComponent<EnemyHealthScript>().bulletRewardScale += 50;
+                item.GetComponent<EnemyHealthScript>().timeRewardScale += 50;
             }
             bulletRewardlvl++;
         }
