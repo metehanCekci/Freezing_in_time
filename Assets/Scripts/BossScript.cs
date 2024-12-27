@@ -6,6 +6,7 @@ public class BossScript : MonoBehaviour
     public GameObject controlledObject; // Hareket ettirilecek nesne
     public Transform targetObject; // Hedef nesne
     public float speed = 3f; // Hareket hýzý
+    public Vector3 targetPosition;
 
     private Animator animator;
     private bool isMoving = false; // Hareket durumu
@@ -17,6 +18,7 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        targetPosition = new Vector3(0f, 0.5f,0f); // Hedef pozisyon (x, y)
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class BossScript : MonoBehaviour
         else
         {
             animator.SetBool("attacking", false); // Saldýrýyý durdur
+            controlledObject.transform.position = Vector3.MoveTowards(controlledObject.transform.position, targetPosition, speed * Time.deltaTime);
         }
     }
 
