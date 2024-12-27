@@ -352,7 +352,6 @@ void ApplyMovement()
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
             bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
-            timeAmount--;
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
             gunAnim.SetTrigger("isAttack");
 
