@@ -10,6 +10,12 @@ public class DeathMenu : MonoBehaviour
     
     [Header("Control Elements")]
     [SerializeField] private GameObject ctrlElements;
+
+    [Header("Settings Section")]
+    [SerializeField] private GameObject settingmenu;
+    [Header("Menu before Settings")]
+    //[SerializeField] private GameObject beforemenu;
+    private bool isSetting = false;
     
     [Header("Fade Elements")]
     [SerializeField] private Image fadeImage; // The Image used for the fade effect
@@ -33,8 +39,16 @@ public class DeathMenu : MonoBehaviour
         // Any logic needed for update
     }
 
-    public void Resume(){
-        
+    public void SettingsPop(){
+        isSetting = !isSetting;
+        if(isSetting){
+            settingmenu.SetActive(true);
+            
+        }
+        else{
+            settingmenu.SetActive(false);
+            //beforemenu.SetActive(true);
+        }
     }
 
     public void RestartScene()

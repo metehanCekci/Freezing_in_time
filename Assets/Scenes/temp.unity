@@ -7118,6 +7118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa8723c16bac8a4b8101f3da7cfb3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAmount: 0
   moveSpeed: 1.35
   fallSpeed: 10
 --- !u!114 &675696552
@@ -12893,6 +12894,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 206236306}
     - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: touchJoystick
       value: 
       objectReference: {fileID: 1834401950}
@@ -13673,7 +13682,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: '10
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

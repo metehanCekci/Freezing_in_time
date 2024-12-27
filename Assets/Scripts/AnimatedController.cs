@@ -54,7 +54,7 @@ public class AnimatedController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab; // Bullet prefab
     [SerializeField] private Transform firePoint; // Bullet spawn point
     [SerializeField] public float bulletInterval = 0.5f; // Bullet creation interval
-    [SerializeField] public int timeAmount = 100;
+    [SerializeField] public float timeAmount = 100f;
     [SerializeField] private TMP_Text bulletHud;
 
     private float lastBulletTime = 0f; // Last bullet creation time
@@ -98,27 +98,12 @@ void Start()
     StartCoroutine(ReduceTimeOverTime());
 }
 
-private IEnumerator ReduceTimeOverTime()
-{
-    while (timeAmount > 0) // Run as long as timeAmount is greater than 0
-    {
-        yield return new WaitForSeconds(1); // Wait for 1 second
-        timeAmount--; // Reduce timeAmount by 1
+    
 
-        // Update bullet HUD to reflect the current timeAmount
-        bulletHud.text = timeAmount.ToString();
-    }
+     
 
-    // If timeAmount reaches 0, handle player's death or other logic
-    if (timeAmount <= 0 && resurrection <= 0 && !isDead)
-    {
-        deathMenu.SetActive(true);
-        Time.timeScale = 0;
-        isDead = true;
-    }
-}
 
-void Update()
+    void Update()
 {
     initialGunRotation = gunTransform.rotation;
 
@@ -540,5 +525,34 @@ void ApplyMovement()
         Debug.Log("Player resurrected! Remaining resurrections: " + resurrection);
     }
 
-    
+    private IEnumerator ReduceTimeOverTime()
+    {
+        while (timeAmount > 0)
+        {
+            if (timeAmount > 96)
+            {
+                yield return new WaitForSeconds(1);
+                timeAmount--;
+            }
+            else
+            {
+                // Süre 1 saniyenin altına düştüğünde daha sık azalmaya başlar.
+                yield return new WaitForSeconds(0.01f);
+                timeAmount -= 0.01f;
+            }
+
+            // Zamanlayıcı arayüzünü güncelle.
+            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
+        }
+
+        // Eğer zaman dolmuşsa ve canlanma hakkı yoksa ölüm ekranını aç.
+        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+        {
+            deathMenu.SetActive(true);
+            Time.timeScale = 0;
+            isDead = true;
+        }
+    }
+
+
 }

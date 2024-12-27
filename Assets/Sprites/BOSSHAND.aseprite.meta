@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 2ed05d864c3c9c44cafdbb0a0e344ce1
+<<<<<<< HEAD
+guid: b208a4961ffdfcd48871afc81f8a7d84
+=======
+guid: 011fdffc4dd03ba48aafda54002d7d85
+>>>>>>> 7a2d8e8d696fd39b3cfbd2c7a6ad693e78606979
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -79,7 +83,7 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
@@ -92,12 +96,12 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638709419251626347
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -124,8 +128,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BOSSHAND
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.53543305, y: -0.19047618}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -134,7 +138,11 @@ ScriptedImporter:
       y: 4
       width: 127
       height: 168
-    spriteID: 9c8b821a73e99d748bf78fc8db9fef46
+<<<<<<< HEAD
+    spriteID: 073a96d2467daee4ca6e0bd09823d34c
+=======
+    spriteID: 88715adce43adcc4f9d9ae3273546d5f
+>>>>>>> 7a2d8e8d696fd39b3cfbd2c7a6ad693e78606979
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +168,11 @@ ScriptedImporter:
         y: 32
         width: 127
         height: 168
-      spriteId: 9c8b821a73e99d748bf78fc8db9fef46
+<<<<<<< HEAD
+      spriteId: 073a96d2467daee4ca6e0bd09823d34c
+=======
+      spriteId: 88715adce43adcc4f9d9ae3273546d5f
+>>>>>>> 7a2d8e8d696fd39b3cfbd2c7a6ad693e78606979
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -171,42 +183,6 @@ ScriptedImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Android
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
