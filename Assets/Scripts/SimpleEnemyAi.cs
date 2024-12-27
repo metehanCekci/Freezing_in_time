@@ -62,6 +62,8 @@ public class SimpleEnemyAi : MonoBehaviour
             // Normal hareket
             MoveTowardsPlayer();
         }
+
+        
     }
 
     void MoveTowardsPlayer()
