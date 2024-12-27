@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54ffa07a0a1e2c14eaa35fd3cc58ee22
+guid: 6a26462b7137f644787619ff19158129
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,51 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: BossStart
     originalName: 
-    pivot: {x: 0.5756929, y: 0.5078614}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 38
-      width: 30
-      height: 22
-    spriteID: ec527a7c17c848f47bc398dd516b19ec
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 38}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5678572, y: 0.6017751}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 68
-      width: 27
-      height: 23
-    spriteID: f34f3f24fcfa8e043a6ef4ff38e8c0ca
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 68}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.6767748, y: 0.6069014}
+    pivot: {x: 0.2952381, y: -0.088397786}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -174,9 +132,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 30
-      height: 26
-    spriteID: d867bafad0c5e1d4b899049aaeab04d1
+      width: 105
+      height: 181
+    spriteID: c01ad11562b6863449ced45e8d664b29
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -188,39 +146,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1643969180
-    name: snowball
+    guid: -2128837175
+    name: BossStart
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: BossStart
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 19
-        width: 30
-        height: 22
-      spriteId: ec527a7c17c848f47bc398dd516b19ec
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 8
-        y: 18
-        width: 27
-        height: 23
-      spriteId: f34f3f24fcfa8e043a6ef4ff38e8c0ca
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 5
-        y: 15
-        width: 30
-        height: 26
-      spriteId: d867bafad0c5e1d4b899049aaeab04d1
+        x: 69
+        y: 16
+        width: 105
+        height: 181
+      spriteId: c01ad11562b6863449ced45e8d664b29
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -239,4 +179,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 50, y: 50}
+  canvasSize: {x: 200, y: 200}
