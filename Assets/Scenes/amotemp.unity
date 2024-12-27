@@ -19046,11 +19046,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1792822958096026065, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.401
+      value: -0.332
       objectReference: {fileID: 0}
     - target: {fileID: 1792822958096026065, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.237
+      value: 0.378
       objectReference: {fileID: 0}
     - target: {fileID: 1807555177039300731, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: m_Size.y
@@ -19194,6 +19194,10 @@ PrefabInstance:
     - target: {fileID: 284169837859494973, guid: 4a531ae5a45f14d45ba1dc4844d032ec, type: 3}
       propertyPath: m_Name
       value: Enemy2PlaceHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 284169837859494973, guid: 4a531ae5a45f14d45ba1dc4844d032ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2458300692580238497, guid: 4a531ae5a45f14d45ba1dc4844d032ec, type: 3}
       propertyPath: explosion
