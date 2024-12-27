@@ -1,100 +1,53 @@
 using UnityEngine;
-using System.Collections;
 
 public class BossScript : MonoBehaviour
 {
-    public GameObject controlledObject; // Hareket ettirilecek nesne
-    public Transform targetObject; // Hedef nesne
-    public float speed = 3f; // Hareket hýzý
-    public Vector3 targetPosition;
+    [Header("Kol Ayarlarý")]
+    public GameObject leftArm; // Sol kol nesnesi
+    public GameObject rightArm; // Sað kol nesnesi
+    public Transform leftArmBasePos; // Sol kolun baþlangýç pozisyonu
+    public Transform rightArmBasePos; // Sað kolun baþlangýç pozisyonu
+    public Transform playerTarget; // Oyuncu hedefi
+    public float speed = 5f; // Hareket hýzý
 
-    private Animator animator;
-    private bool isMoving = false; // Hareket durumu
-    private bool attack = false; // Saldýrý durumu
-    private bool isCooldown = false; // Saldýrý cooldown kontrolü
-
-    public float attackCooldown = 5f; // Saldýrý arasýndaki bekleme süresi
-
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        targetPosition = new Vector3(0f, 0.5f,0f); // Hedef pozisyon (x, y)
-    }
+    public bool attacking = false; // Saldýrý durumu
 
     void Update()
     {
-        if (attack && !isCooldown)
+        if (attacking)
         {
-            // Hedefe doðru hareketi kontrol et
-            if (controlledObject != null && targetObject != null)
-            {
-                MoveControlledObject();
-            }
+            // Saldýrý modunda kollarý oyuncuya doðru hareket ettir
+            MoveArmToTarget(leftArm, playerTarget.position);
+            MoveArmToTarget(rightArm, playerTarget.position);
         }
         else
         {
-            animator.SetBool("attacking", false); // Saldýrýyý durdur
-            controlledObject.transform.position = Vector3.MoveTowards(controlledObject.transform.position, targetPosition, speed * Time.deltaTime);
+            // Saldýrý sona erdiðinde kollarý baþlangýç pozisyonlarýna geri döndür
+            MoveArmToTarget(leftArm, leftArmBasePos.position);
+            MoveArmToTarget(rightArm, rightArmBasePos.position);
         }
     }
 
-    private void MoveControlledObject()
+    private void MoveArmToTarget(GameObject arm, Vector3 targetPosition)
     {
-        // Kontrol edilen nesneyi hedefe doðru hareket ettir
-        float newX = Mathf.MoveTowards(controlledObject.transform.position.x, targetObject.position.x, speed * Time.deltaTime);
-        controlledObject.transform.position = new Vector2(newX, controlledObject.transform.position.y);
+        arm.transform.position = Vector3.MoveTowards(arm.transform.position, targetPosition, speed * Time.deltaTime);
 
-        // Hedefe ulaþtýysa hareketi durdur ve rastgele bir saldýrý baþlat
-        if (Mathf.Abs(controlledObject.transform.position.x - targetObject.position.x) <= 0.01f) // Daha hassas kontrol
+        // Hedefe ulaþtýðýnda log ver
+        if (Vector3.Distance(arm.transform.position, targetPosition) < 0.1f)
         {
-            controlledObject.transform.position = new Vector2(targetObject.position.x, controlledObject.transform.position.y); // Pozisyonu tam hizala
-            isMoving = false;
-            StartCoroutine(HandleAttack());
+            Debug.Log($"{arm.name} hedefe ulaþtý: {targetPosition}");
         }
     }
 
-    private IEnumerator HandleAttack()
+    public void StartAttack()
     {
-        isCooldown = true; // Cooldown baþlat
-
-        // Rastgele bir saldýrý seç
-        int randomAttack = Random.Range(0, 2);
-        if (randomAttack == 0)
-        {
-            Debug.Log("Saldýrý 1 baþladý!");
-            animator.SetBool("attacking", true);
-        }
-        else
-        {
-            Debug.Log("Saldýrý 2 baþladý!");
-            animator.SetBool("attacking", true);
-        }
-
-        yield return new WaitForSeconds(attackCooldown); // Cooldown süresi boyunca bekle
-        isCooldown = false; // Cooldown sona erdi
-        attack = false; // Yeni bir saldýrý için hazýr
+        Debug.Log("Saldýrý baþlatýlýyor!");
+        attacking = true; // Saldýrý modunu etkinleþtir
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void EndAttack()
     {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Temas algýlandý!");
-            targetObject = collision.transform; // Hedef nesneyi ayarla
-            attack = true; // Saldýrýyý baþlat
-        }
-    }
-
-    public void attacking()
-    {
-        // Saldýrý sýrasýnda collider'ý etkinleþtir
-        gameObject.GetComponent<CircleCollider2D>().enabled = true;
-    }
-
-    public void attackingEnd()
-    {
-        // Saldýrý sona erdiðinde collider'ý devre dýþý býrak
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        
+        Debug.Log("Saldýrý sona erdi, kollar baþlangýç pozisyonlarýna dönüyor!");
+        attacking = false; // Saldýrý modunu devre dýþý býrak
     }
 }
