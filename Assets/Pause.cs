@@ -1,23 +1,32 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // Required for Image component
-using System.Collections;
+using UnityEngine.UI;
 
-public class DeathMenu : MonoBehaviour
+using System.Collections;
+public class Pause : MonoBehaviour
 {
     [Header("GUI Elements")]
     [SerializeField] private GameObject guiElements;
-    
+
     [Header("Control Elements")]
     [SerializeField] private GameObject ctrlElements;
-    
+
     [Header("Fade Elements")]
     [SerializeField] private Image fadeImage; // The Image used for the fade effect
     public float fadeDuration = 1f; // Duration for the fade effect
 
     private bool isFading = false; // Flag to prevent multiple fade operations
 
+    
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public void Resume(){
+        guiElements.SetActive(true);
+        gameObject.SetActive(false);
+    }
+    
     void Start()
     {
         guiElements.gameObject.SetActive(false);
@@ -31,10 +40,6 @@ public class DeathMenu : MonoBehaviour
     void Update()
     {
         // Any logic needed for update
-    }
-
-    public void Resume(){
-        
     }
 
     public void RestartScene()

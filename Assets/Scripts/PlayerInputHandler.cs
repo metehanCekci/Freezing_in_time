@@ -1,12 +1,17 @@
+using System.Collections;
+using System.Threading;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class PlayerInputHandler : MonoBehaviour
 {
     [Header("Input Actions Asset")]
     [SerializeField] private InputActionAsset playerControls;
     [Header("Actions Map Name Reference")]
     [SerializeField] private string mapName = "Player";
+    [SerializeField] private string UImapName = "UI";
     [Header("Actions Name Reference")]
     [SerializeField] private string move = "Move";
     [Header("Actions Name Reference")]
@@ -15,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string jump = "Jump";
     [Header("Actions Name Reference")]
     [SerializeField] private string sprint = "Sprint";
+    [SerializeField] private string escape = "Escape";
 
     [Header("Movement Joystick")]
     [SerializeField] private TouchJoystick movementJoystick;
@@ -24,6 +30,12 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction lookAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction escapeAction;
+    public bool isPaused = false;
+
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject guiElements;
+    [SerializeField] private GameObject CtrlElements;
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -31,8 +43,15 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 LookInput { get; private set; }
     public bool JumpTriggered { get; private set; }
     public float SprintValue { get; private set; }
+    public bool EscapeTriggered { get; private set; }
 
     private bool isMobile;
+
+    [Header("Fade Elements")]
+    [SerializeField] private Image fadeImage; // The Image used for the fade effect
+    public float fadeDuration = 1f; // Duration for the fade effect
+
+    private bool isFading = false;
 
     void Awake()
     {
@@ -45,6 +64,7 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction = playerControls.FindActionMap(mapName).FindAction(look);
         jumpAction = playerControls.FindActionMap(mapName).FindAction(jump);
         sprintAction = playerControls.FindActionMap(mapName).FindAction(sprint);
+        escapeAction = playerControls.FindActionMap(UImapName).FindAction(escape);
 
         RegisterInputActions();
 
@@ -87,14 +107,114 @@ public class PlayerInputHandler : MonoBehaviour
 
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => SprintValue = 0f;
+
+        escapeAction.performed += Pause;
     }
 
+    void Pause(InputAction.CallbackContext context)
+    {
+        if (!isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+    }
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false); // Hide the pause menu
+        Time.timeScale = 1f; // Resume game time
+        isPaused = false;
+        guiElements.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+        pauseMenu.SetActive(true); // Show the pause menu
+        Time.timeScale = 0f; // Freeze game time
+        isPaused = true;
+        guiElements.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        StartCoroutine(FadeAndRestartScene());
+    }
+
+    public void QuitGame()
+    {
+        StartCoroutine(FadeAndQuitToMenu());
+    }
+
+    public void QuitToWindows()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
+
+
+    private IEnumerator FadeAndRestartScene()
+    {
+        Time.timeScale = 1;
+        isFading = true;
+
+        // Start the fade to black
+        fadeImage.gameObject.SetActive(true);
+        Color startColor = fadeImage.color;
+        startColor.a = 0f;
+        fadeImage.color = startColor;
+
+        // Fade out to black
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+            fadeImage.color = startColor;
+            yield return null;
+        }
+
+        // Once fade is complete, restart the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // Coroutine to handle the fade-out and scene transition to the main menu
+    private IEnumerator FadeAndQuitToMenu()
+    {
+        Time.timeScale = 1;
+        isFading = true;
+
+        // Start the fade to black
+        fadeImage.gameObject.SetActive(true);
+        Color startColor = fadeImage.color;
+        startColor.a = 0f;
+        fadeImage.color = startColor;
+
+        // Fade out to black
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+            fadeImage.color = startColor;
+            yield return null;
+        }
+
+        // Once fade is complete, load the main menu
+        SceneManager.LoadScene(0);
+    }
     void OnEnable()
     {
         moveAction.Enable();
         lookAction.Enable();
         jumpAction.Enable();
         sprintAction.Enable();
+        if (SceneManager.GetActiveScene().buildIndex != 0) escapeAction.Enable();
+        else escapeAction.Disable();
     }
 
     void OnDisable()
@@ -103,5 +223,6 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.Disable();
         jumpAction.Disable();
         sprintAction.Disable();
+        escapeAction.Disable();
     }
 }

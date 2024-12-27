@@ -387,7 +387,7 @@ void ApplyMovement()
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
-            bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
+            bullet.transform.localScale = new Vector3(3f, 3f, 1f);
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
         }
     }
