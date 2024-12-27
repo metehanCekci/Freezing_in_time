@@ -137,7 +137,7 @@ public class PlayerInputHandler : MonoBehaviour
         isPaused = true;
         guiElements.SetActive(false);
     }
-
+/*
     public void RestartGame()
     {
         StartCoroutine(FadeAndRestartScene());
@@ -207,6 +207,7 @@ public class PlayerInputHandler : MonoBehaviour
         // Once fade is complete, load the main menu
         SceneManager.LoadScene(0);
     }
+    */
     void OnEnable()
     {
         moveAction.Enable();
