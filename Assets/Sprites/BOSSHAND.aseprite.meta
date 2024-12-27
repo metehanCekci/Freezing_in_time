@@ -124,8 +124,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BOSSHAND
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.53543305, y: -0.19047618}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -134,7 +134,7 @@ ScriptedImporter:
       y: 4
       width: 127
       height: 168
-    spriteID: f91081a2b4007304780c22fbf5ecb7f5
+    spriteID: 9aaa7a12e55232545839ba2ac07655ec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
         y: 32
         width: 127
         height: 168
-      spriteId: f91081a2b4007304780c22fbf5ecb7f5
+      spriteId: 9aaa7a12e55232545839ba2ac07655ec
     linkedCells: []
     parentIndex: -1
   platformSettings:
