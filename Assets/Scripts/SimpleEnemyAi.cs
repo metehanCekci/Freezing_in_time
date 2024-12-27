@@ -13,11 +13,14 @@ public class SimpleEnemyAi : MonoBehaviour
     private float fallDuration = 1f; // Time for fast fall
     private float fallTimer = 0f; // Timer to track the fall duration
 
+    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer for flipping
+
     void Start()
     {
         // Get references to the necessary components
         player = GameObject.FindWithTag("Player").transform; // Assuming the player is tagged "Player"
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
 
         // Start the falling phase
         rb.gravityScale = fallSpeed; // Set gravity scale to simulate fast falling
@@ -44,12 +47,22 @@ public class SimpleEnemyAi : MonoBehaviour
         }
     }
 
-void MoveTowardsPlayer()
-{
-    // Calculate the direction towards the player, but only in the X axis
-    Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
+    void MoveTowardsPlayer()
+    {
+        // Calculate the direction towards the player, but only in the X axis
+        Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-    // Move the enemy using Rigidbody2D, only affecting the X axis
-    rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
-}
+        // Move the enemy using Rigidbody2D, only affecting the X axis
+        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
+
+        // Flip the sprite based on the movement direction
+        if (direction.x < 0) // Moving left
+        {
+            spriteRenderer.flipX = true; // Flip the sprite to face left
+        }
+        else if (direction.x > 0) // Moving right
+        {
+            spriteRenderer.flipX = false; // Flip the sprite to face right
+        }
+    }
 }
