@@ -54,7 +54,7 @@ public class AnimatedController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab; // Bullet prefab
     [SerializeField] private Transform firePoint; // Bullet spawn point
     [SerializeField] public float bulletInterval = 0.5f; // Bullet creation interval
-    [SerializeField] public int timeAmount = 100;
+    [SerializeField] public float timeAmount = 100f;
     [SerializeField] private TMP_Text bulletHud;
 
     private float lastBulletTime = 0f; // Last bullet creation time
@@ -98,27 +98,41 @@ void Start()
     StartCoroutine(ReduceTimeOverTime());
 }
 
-private IEnumerator ReduceTimeOverTime()
-{
-    while (timeAmount > 0) // Run as long as timeAmount is greater than 0
+    private IEnumerator ReduceTimeOverTime()
     {
-        yield return new WaitForSeconds(1); // Wait for 1 second
-        timeAmount--; // Reduce timeAmount by 1
+        while (timeAmount > 0) 
+        {
+            
+            if (timeAmount > 1)
+            {
+                yield return new WaitForSeconds(1); 
+                timeAmount--; 
+            }
+            else
+            {
+                
+                yield return new WaitForSeconds(0.1f); 
+                timeAmount -= 0.01f; 
 
-        // Update bullet HUD to reflect the current timeAmount
-        bulletHud.text = timeAmount.ToString();
+                
+                bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
+            }
+
+            
+            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
+        }
+
+       
+        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+        {
+            deathMenu.SetActive(true);
+            Time.timeScale = 0;
+            isDead = true;
+        }
     }
 
-    // If timeAmount reaches 0, handle player's death or other logic
-    if (timeAmount <= 0 && resurrection <= 0 && !isDead)
-    {
-        deathMenu.SetActive(true);
-        Time.timeScale = 0;
-        isDead = true;
-    }
-}
 
-void Update()
+    void Update()
 {
     initialGunRotation = gunTransform.rotation;
 
