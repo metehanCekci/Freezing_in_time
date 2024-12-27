@@ -523,7 +523,7 @@ void ApplyMovement()
     {
         while (timeAmount > 1)
         {
-            if (timeAmount > 30)
+            if (timeAmount > 1)
             {
                 yield return new WaitForSeconds(1);
                 timeAmount--;
