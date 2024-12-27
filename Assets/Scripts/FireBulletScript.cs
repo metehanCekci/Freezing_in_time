@@ -2,29 +2,42 @@ using UnityEngine;
 
 public class FireBulletScript : MonoBehaviour
 {
-    public float speed = 10f; // Merminin hareket hızı
-    private Vector2 direction; // Merminin hareket yönü
+    public float speed = 10f; // Bullet movement speed
+
+    public bool isLaser = false;
+    private Vector2 direction; // Bullet movement direction
 
     private void Awake()
     {
-        // Oyuncuyu 'Player' tag'ı ile bul
+        // Find the player by the 'Player' tag
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        // Merminin hareket yönünü oyuncudan almak
-        Vector2 playerPosition = player.position; // Oyuncunun pozisyonu
-        direction = (playerPosition - (Vector2)transform.position).normalized; // Merminin hareket yönü (normalize edilmiş)
-        Destroy(this.gameObject,3);
+        // Get the player's position
+        Vector2 playerPosition = player.position;
+
+        // Calculate the direction from the bullet to the player
+        direction = (playerPosition - (Vector2)transform.position).normalized;
+
+        if(isLaser)
+        this.gameObject.transform.localScale = new Vector3(1, 0.2f, 1);
+
+        // Destroy the bullet after 3 seconds
+        Destroy(this.gameObject, 3f);
     }
 
     private void Update()
     {
-        // Mermiyi belirlenen yönde hareket ettir
+        // Move the bullet in the direction of the player
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
+        // Rotate the bullet to face the direction it's moving
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Mermi bir nesneye çarptığında, mermi yok olmalı
+        // Destroy the bullet when it collides with any object
         Destroy(gameObject);
     }
 }

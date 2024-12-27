@@ -6,12 +6,15 @@ public class BossScript : MonoBehaviour
     public bool handIsLeft = true;
 
     public GameObject leftHand;
+    public Sprite closedHand;
+    public Sprite openedHand;
     public GameObject rightHand;
     public Transform player; // Reference to the player transform
     private Vector3 originalLeftHandPosition;
     private Vector3 originalRightHandPosition;
     private bool returnToPosition = false;
     public bool followPlayer = false;
+    public GameObject laser;
 
     private float moveSpeed = 5f; // Speed at which the left hand follows
     private float slamDelay = 1f; // Time to wait before the attack is launched
@@ -33,11 +36,11 @@ public class BossScript : MonoBehaviour
         {
             if(handIsLeft)
             {
-                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, new Vector3(player.transform.position.x, 3, 0), moveSpeed * Time.deltaTime);
+                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, new Vector3(player.transform.position.x, 4, 0), moveSpeed * Time.deltaTime);
             }
             else
             {
-                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, new Vector3(player.transform.position.x, 3, 0), moveSpeed * Time.deltaTime);
+                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, new Vector3(player.transform.position.x, 4, 0), moveSpeed * Time.deltaTime);
             }
         }
         if(returnToPosition)
@@ -55,28 +58,34 @@ public class BossScript : MonoBehaviour
 
     public void RandomAttack()
     {
-        int roll = Random.Range(0, 1); // Randomly pick 0 or 1 for the attack choice
+        int roll = Random.Range(0, 2); // Randomly pick 0 or 1 for the attack choice
 
         if (roll == 0)
         {
             StartCoroutine("SlamAttack");
+        }
+        if (roll == 1)
+        {
+            StartCoroutine("LaserAttack");
         }
     }
 
     IEnumerator SlamAttack()
     {
         followPlayer = true;
-        yield return new WaitForSeconds(1f);
-        followPlayer = false;
         yield return new WaitForSeconds(0.7f);
+        followPlayer = false;
+        yield return new WaitForSeconds(0.6f);
 
         if (handIsLeft)
         {
             leftHand.GetComponent<Animator>().SetBool("isAttacking",true);
+            leftHand.GetComponent<SpriteRenderer>().sprite = closedHand;
         }
         else
         {
             rightHand.GetComponent<Animator>().SetBool("isAttacking",true);
+            rightHand.GetComponent<SpriteRenderer>().sprite = closedHand;
         }
 
         yield return new WaitForSeconds(2);
@@ -85,6 +94,34 @@ public class BossScript : MonoBehaviour
         returnToPosition = false;
 
         handIsLeft = !handIsLeft;
+
+        leftHand.GetComponent<SpriteRenderer>().sprite = openedHand;
+        rightHand.GetComponent<SpriteRenderer>().sprite = openedHand;
+
+        StartCoroutine("CoolDown");
+    }
+
+    IEnumerator LaserAttack()
+    {
+        GameObject clone = Instantiate(laser);
+        clone.transform.position = laser.transform.position;
+        clone.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject clone2 = Instantiate(laser);
+        clone2.transform.position = laser.transform.position;
+        clone2.SetActive(true);
+        
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject clone3 = Instantiate(laser);
+        clone3.transform.position = laser.transform.position;
+        clone3.SetActive(true);
+        
+        Destroy(clone,3);
+        Destroy(clone2,3);
+        Destroy(clone3,3);
 
         StartCoroutine("CoolDown");
     }

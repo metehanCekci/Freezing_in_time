@@ -124,7 +124,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: anivia
     originalName: 
-    pivot: {x: 0.5076923, y: -0.5533981}
+    pivot: {x: 0.5076923, y: -0.5480769}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,7 +133,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 130
-      height: 103
+      height: 104
     spriteID: 82fdf94ceaac626408cd8af1caf142f3
     spriteBone: []
     spriteOutline: []
@@ -143,6 +143,69 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5076923, y: -0.76315784}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 116
+      width: 130
+      height: 76
+    spriteID: a0b738fe07999d5489517414032e545f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 116}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.5510204, y: -0.9047619}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 284
+      width: 147
+      height: 63
+    spriteID: c861131b3ffb2954289b4547404b77b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 284}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.5076923, y: -0.76315784}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 200
+      width: 130
+      height: 76
+    spriteID: d6dbe73cbbf4a9f4d9b706e3c62abd43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 200}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -152,15 +215,42 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: anivia
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 34
         y: 57
         width: 130
-        height: 103
+        height: 104
       spriteId: 82fdf94ceaac626408cd8af1caf142f3
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 34
+        y: 58
+        width: 130
+        height: 76
+      spriteId: a0b738fe07999d5489517414032e545f
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 19
+        y: 57
+        width: 147
+        height: 63
+      spriteId: c861131b3ffb2954289b4547404b77b9
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 34
+        y: 58
+        width: 130
+        height: 76
+      spriteId: d6dbe73cbbf4a9f4d9b706e3c62abd43
     linkedCells: []
     parentIndex: -1
   platformSettings:
