@@ -4476,7 +4476,7 @@ Transform:
   m_GameObject: {fileID: 465492380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9894, y: -0.4308, z: -10}
+  m_LocalPosition: {x: -0.44, y: -0.4308, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8018,7 +8018,7 @@ Transform:
   m_GameObject: {fileID: 784766885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9894, y: -0.4308, z: -10}
+  m_LocalPosition: {x: -0.44, y: -0.4308, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17839,9 +17839,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854094989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.097, y: 1.312, z: 0}
-  m_LocalScale: {x: 0.9255133, y: 1.120477, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.318, y: 1.204, z: 0}
+  m_LocalScale: {x: 0.9255133, y: 1.1204771, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2016225680}
@@ -21011,7 +21011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9894
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21054,13 +21054,13 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1854094991}
-    - targetCorrespondingSourceObject: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1762207157}
     - targetCorrespondingSourceObject: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1113860058}
+    - targetCorrespondingSourceObject: {fileID: 8758566803029739863, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854094991}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7723878013538523016, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       insertIndex: -1
