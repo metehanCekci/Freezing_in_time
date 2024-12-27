@@ -31,11 +31,10 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction jumpAction;
     private InputAction sprintAction;
     private InputAction escapeAction;
-    public bool isPaused = false;
 
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject guiElements;
-    [SerializeField] private GameObject CtrlElements;
+
+
+    [SerializeField] private Pause pauseScript;
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -108,106 +107,81 @@ public class PlayerInputHandler : MonoBehaviour
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => SprintValue = 0f;
 
-        escapeAction.performed += Pause;
+        escapeAction.performed += context => pauseScript.HandleEscape(context);
     }
 
-    void Pause(InputAction.CallbackContext context)
-    {
-        if (!isPaused)
+
+    /*
+        public void RestartGame()
         {
-            PauseGame();
+            StartCoroutine(FadeAndRestartScene());
         }
-        else
+
+        public void QuitGame()
         {
-            ResumeGame();
+            StartCoroutine(FadeAndQuitToMenu());
         }
-    }
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false); // Hide the pause menu
-        Time.timeScale = 1f; // Resume game time
-        isPaused = false;
-        guiElements.SetActive(true);
-    }
 
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true); // Show the pause menu
-        Time.timeScale = 0f; // Freeze game time
-        isPaused = true;
-        guiElements.SetActive(false);
-    }
-/*
-    public void RestartGame()
-    {
-        StartCoroutine(FadeAndRestartScene());
-    }
-
-    public void QuitGame()
-    {
-        StartCoroutine(FadeAndQuitToMenu());
-    }
-
-    public void QuitToWindows()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        Application.Quit();
-    }
-
-
-    private IEnumerator FadeAndRestartScene()
-    {
-        Time.timeScale = 1;
-        isFading = true;
-
-        // Start the fade to black
-        fadeImage.gameObject.SetActive(true);
-        Color startColor = fadeImage.color;
-        startColor.a = 0f;
-        fadeImage.color = startColor;
-
-        // Fade out to black
-        float timeElapsed = 0f;
-        while (timeElapsed < fadeDuration)
+        public void QuitToWindows()
         {
-            timeElapsed += Time.deltaTime;
-            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #endif
+            Application.Quit();
+        }
+
+
+        private IEnumerator FadeAndRestartScene()
+        {
+            Time.timeScale = 1;
+            isFading = true;
+
+            // Start the fade to black
+            fadeImage.gameObject.SetActive(true);
+            Color startColor = fadeImage.color;
+            startColor.a = 0f;
             fadeImage.color = startColor;
-            yield return null;
+
+            // Fade out to black
+            float timeElapsed = 0f;
+            while (timeElapsed < fadeDuration)
+            {
+                timeElapsed += Time.deltaTime;
+                startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+                fadeImage.color = startColor;
+                yield return null;
+            }
+
+            // Once fade is complete, restart the scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        // Once fade is complete, restart the scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    // Coroutine to handle the fade-out and scene transition to the main menu
-    private IEnumerator FadeAndQuitToMenu()
-    {
-        Time.timeScale = 1;
-        isFading = true;
-
-        // Start the fade to black
-        fadeImage.gameObject.SetActive(true);
-        Color startColor = fadeImage.color;
-        startColor.a = 0f;
-        fadeImage.color = startColor;
-
-        // Fade out to black
-        float timeElapsed = 0f;
-        while (timeElapsed < fadeDuration)
+        // Coroutine to handle the fade-out and scene transition to the main menu
+        private IEnumerator FadeAndQuitToMenu()
         {
-            timeElapsed += Time.deltaTime;
-            startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
-            fadeImage.color = startColor;
-            yield return null;
-        }
+            Time.timeScale = 1;
+            isFading = true;
 
-        // Once fade is complete, load the main menu
-        SceneManager.LoadScene(0);
-    }
-    */
+            // Start the fade to black
+            fadeImage.gameObject.SetActive(true);
+            Color startColor = fadeImage.color;
+            startColor.a = 0f;
+            fadeImage.color = startColor;
+
+            // Fade out to black
+            float timeElapsed = 0f;
+            while (timeElapsed < fadeDuration)
+            {
+                timeElapsed += Time.deltaTime;
+                startColor.a = Mathf.Clamp01(timeElapsed / fadeDuration); // Increase alpha to 1
+                fadeImage.color = startColor;
+                yield return null;
+            }
+
+            // Once fade is complete, load the main menu
+            SceneManager.LoadScene(0);
+        }
+        */
     void OnEnable()
     {
         moveAction.Enable();

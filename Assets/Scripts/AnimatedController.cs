@@ -97,12 +97,6 @@ void Start()
     // Start the time reduction coroutine
     StartCoroutine(ReduceTimeOverTime());
 }
-
-    
-
-     
-
-
     void Update()
 {
     initialGunRotation = gunTransform.rotation;
@@ -352,7 +346,7 @@ void ApplyMovement()
             {
                 UseResurrection();
             }
-            else
+            /*else
             {
                 if(!isDead)
                 {
@@ -360,7 +354,7 @@ void ApplyMovement()
                 Time.timeScale = 0;
                 isDead = true;
                 }
-            }
+            }*/
 
         }
     }
@@ -501,12 +495,12 @@ void ApplyMovement()
             }
             else
             {
-                if(!isDead)
+                /*if(!isDead)
                 {// No resurrection available, show the death menu
                 deathMenu.SetActive(true);
                 Time.timeScale = 0;
                 isDead = true;
-                }
+                }*/
             }
         }
     }
@@ -527,32 +521,34 @@ void ApplyMovement()
 
     private IEnumerator ReduceTimeOverTime()
     {
-        while (timeAmount > 0)
+        while (timeAmount > 1)
         {
-            if (timeAmount > 96)
+            if (timeAmount > 30)
             {
                 yield return new WaitForSeconds(1);
                 timeAmount--;
             }
             else
             {
-                // Süre 1 saniyenin altına düştüğünde daha sık azalmaya başlar.
+                // When time falls below 96, it decreases faster and game speed is reduced.
                 yield return new WaitForSeconds(0.01f);
                 timeAmount -= 0.01f;
+
+                // Dynamically adjust the game's speed based on timeAmount.
+           
+                Time.timeScale = Mathf.Clamp(timeAmount / 100f, 0.5f, 1f);
             }
 
-            // Zamanlayıcı arayüzünü güncelle.
+            // Update timer UI
             bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
         }
-
-        // Eğer zaman dolmuşsa ve canlanma hakkı yoksa ölüm ekranını aç.
+        
         if (timeAmount <= 0 && resurrection <= 0 && !isDead)
         {
+            Debug.Log("METEHAN");
             deathMenu.SetActive(true);
             Time.timeScale = 0;
             isDead = true;
         }
     }
-
-
 }
