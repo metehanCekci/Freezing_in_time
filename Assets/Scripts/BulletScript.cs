@@ -75,7 +75,7 @@ public class BulletScript : MonoBehaviour
             float spreadDirection = transform.eulerAngles.z + (i * spreadAngle);
 
             // Set the new bullet's direction based on the calculated angle
-            newBullet.transform.eulerAngles = new Vector3(0, 0, spreadDirection);
+            newBullet.transform.eulerAngles = new Vector3(-0.35f, 1.25f, spreadDirection);
 
             // Set the new bullet's speed and other properties (if needed)
             BulletScript bulletScript = newBullet.GetComponent<BulletScript>();
