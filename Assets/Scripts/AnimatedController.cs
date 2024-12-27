@@ -15,6 +15,8 @@ public class AnimatedController : MonoBehaviour
     [SerializeField] public float moveSpeed = 5f;
     public bool doubleShot = false;
     public int resurrection = 0;
+
+    public Animator anim;
     [SerializeField] private float sprintMultiplier = 1.5f;
 
     [Header("Jump Parameters")]
@@ -185,15 +187,38 @@ public class AnimatedController : MonoBehaviour
     }
 
     // Movement function
-    void ApplyMovement()
+void ApplyMovement()
+{
+    // Get horizontal input from player
+    float horizontalInput = inputHandler.MoveInput.x;
+
+    // If the player is moving horizontally, set isWalking to true, otherwise false
+    if (horizontalInput != 0)
     {
-        float horizontalInput = inputHandler.MoveInput.x;
-
-        float speed = moveSpeed;
-
-        // Apply movement using Rigidbody2D velocity
-        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+        anim.SetBool("isWalking", true);  // Player is moving
     }
+    else
+    {
+        anim.SetBool("isWalking", false);  // Player is not moving
+    }
+
+    // Movement speed
+    float speed = moveSpeed;
+
+    // Apply movement using Rigidbody2D velocity
+    rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+
+    // Flip the sprite depending on movement direction
+    if (horizontalInput < 0)  // Moving left
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+    }
+    else if (horizontalInput > 0)  // Moving right
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+    }
+}
+
 
     // Jump function
     [HideInInspector]
