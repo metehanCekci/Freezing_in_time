@@ -33,6 +33,10 @@ public class DeathMenu : MonoBehaviour
         // Any logic needed for update
     }
 
+    public void Resume(){
+        
+    }
+
     public void RestartScene()
     {
         StartCoroutine(FadeAndRestartScene());

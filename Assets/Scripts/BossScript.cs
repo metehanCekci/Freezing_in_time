@@ -5,8 +5,8 @@ public class BossScript : MonoBehaviour
 {
     public GameObject controlledObject; // Hareket ettirilecek nesne
     public Transform targetObject; // Hedef nesne
-    public Transform startingPoint;
     public float speed = 3f; // Hareket hýzý
+    public Vector3 targetPosition;
 
     private Animator animator;
     private bool isMoving = false; // Hareket durumu
@@ -18,7 +18,7 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        startingPoint = controlledObject.transform;
+        targetPosition = new Vector3(0f, 0.5f,0f); // Hedef pozisyon (x, y)
     }
 
     void Update()
@@ -34,6 +34,7 @@ public class BossScript : MonoBehaviour
         else
         {
             animator.SetBool("attacking", false); // Saldýrýyý durdur
+            controlledObject.transform.position = Vector3.MoveTowards(controlledObject.transform.position, targetPosition, speed * Time.deltaTime);
         }
     }
 
@@ -72,7 +73,6 @@ public class BossScript : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown); // Cooldown süresi boyunca bekle
         isCooldown = false; // Cooldown sona erdi
         attack = false; // Yeni bir saldýrý için hazýr
-        controlledObject.transform.position = startingPoint.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

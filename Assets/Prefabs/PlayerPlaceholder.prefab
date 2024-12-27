@@ -312,8 +312,8 @@ Transform:
   m_GameObject: {fileID: 4669800169298248492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4238, y: 0.0675, z: 0}
-  m_LocalScale: {x: 0.49212092, y: 0.29806876, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1792822958096026065}
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &7122231449626919155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,8 +469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6308939871550023401}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.318, y: 1.204, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.233, y: 0.397, z: 0}
   m_LocalScale: {x: 0.9255133, y: 1.1204771, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -531,7 +531,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4364694976080687286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 7576732018168739202}
   - component: {fileID: 1021831367980161762}
   - component: {fileID: 6862613998767213773}
+  - component: {fileID: 2831456040372875023}
   m_Layer: 7
   m_Name: PlayerPlaceholder
   m_TagString: Player
@@ -695,7 +696,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.02112992, y: 0.9143086}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6407909, y: 1.6418165}
   m_Direction: 0
 --- !u!50 &8194222381945648750
@@ -752,7 +753,6 @@ MonoBehaviour:
   expThreshText: {fileID: 0}
   DamageAmount: 35
   DefenceScale: 0
-  timer: {fileID: 0}
   deathMenu: {fileID: 0}
   touchJoystick: {fileID: 0}
   gunTransform: {fileID: 1792822958096026065}
@@ -760,7 +760,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4669800169298248492}
   firePoint: {fileID: 2388275909969038752}
   bulletInterval: 0.5
-  bulletAmount: 100
+  timeAmount: 100
   bulletHud: {fileID: 0}
   initialGunRotation: {x: 0, y: 0, z: 0, w: 0}
   isGunFlipped: 0
@@ -805,3 +805,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2831456040372875023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723878013538523016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504c0eed7f946e74f9351c12922a3a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
+  currentExperience: 0
+  maxExperience: 0
+  currentLevel: 0

@@ -242,7 +242,7 @@ private void FaceMouseWhileAttacking()
         else // Mouse is on the right
         {
             // Reset gun position to its original position
-            gunTransform.localPosition = new Vector3(-0.4405774f, gunTransform.localPosition.y, gunTransform.localPosition.z);
+            gunTransform.localPosition = new Vector3(-0.303f, gunTransform.localPosition.y, gunTransform.localPosition.z);
 
             if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
@@ -351,7 +351,7 @@ void ApplyMovement()
             // First bullet
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
-            bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
+            bullet.transform.localScale = new Vector3(3f, 3f, 1f);
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
             gunAnim.SetTrigger("isAttack");
 
@@ -387,7 +387,7 @@ void ApplyMovement()
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
-            bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
+            bullet.transform.localScale = new Vector3(3f, 3f, 1f);
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
         }
     }

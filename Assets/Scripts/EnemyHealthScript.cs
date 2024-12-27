@@ -78,7 +78,7 @@ public class EnemyHealthScript : MonoBehaviour
                 player.GetComponent<AnimatedController>().GainExp();
                 player.GetComponent<AnimatedController>().GainBullet(timeReward += ((timeReward/100) * timeRewardScale));
                 //SFXPlayer.gameObject.GetComponent<SFXScript>().PlayHit();
-                audioManager.PlaySFX("Hit");
+                //audioManager.PlaySFX("Hit");
                 Destroy(this.gameObject);
                 Expmanager.Instance.AddExperience(exp);
             }
