@@ -18954,6 +18954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPlaceHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 4913870832060988708, guid: 6f29a4b278fdf134e8fe71ac14712cc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5877505540644518612, guid: 6f29a4b278fdf134e8fe71ac14712cc5, type: 3}
       propertyPath: explosion
       value: 
