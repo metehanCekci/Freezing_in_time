@@ -7487,6 +7487,7 @@ MonoBehaviour:
   controlledObject: {fileID: 1687789138}
   targetObject: {fileID: 1652904524}
   speed: 3
+  attackCooldown: 2
 --- !u!58 &696098200
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15697,6 +15698,7 @@ MonoBehaviour:
   controlledObject: {fileID: 0}
   targetObject: {fileID: 0}
   speed: 2
+  attackCooldown: 2
 --- !u!50 &1571627347
 Rigidbody2D:
   serializedVersion: 5
