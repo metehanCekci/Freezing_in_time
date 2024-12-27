@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b208a4961ffdfcd48871afc81f8a7d84
+guid: 9dc921f1ce647414980fdb8bd38adb80
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,19 +122,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BOSSHAND
+  - name: anivia
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5076923, y: -0.5533981}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 127
-      height: 168
-    spriteID: f91081a2b4007304780c22fbf5ecb7f5
+      width: 130
+      height: 103
+    spriteID: 82fdf94ceaac626408cd8af1caf142f3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,21 +146,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 292717958
-    name: BOSSHAND
+    guid: 1707296112
+    name: anivia
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BOSSHAND
+    - name: anivia
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 32
-        y: 32
-        width: 127
-        height: 168
-      spriteId: f91081a2b4007304780c22fbf5ecb7f5
+        x: 34
+        y: 57
+        width: 130
+        height: 103
+      spriteId: 82fdf94ceaac626408cd8af1caf142f3
     linkedCells: []
     parentIndex: -1
   platformSettings:

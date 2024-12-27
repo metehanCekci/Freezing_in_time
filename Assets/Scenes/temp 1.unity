@@ -1827,6 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guiElements: {fileID: 1650858862}
   ctrlElements: {fileID: 336784226}
+  settingmenu: {fileID: 0}
   fadeImage: {fileID: 1974205351}
   fadeDuration: 0.3
 --- !u!114 &206236309
@@ -2797,12 +2798,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1730311049452063403, guid: 2ed05d864c3c9c44cafdbb0a0e344ce1, type: 3}
+  m_Sprite: {fileID: 7732422846564433530, guid: b208a4961ffdfcd48871afc81f8a7d84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.27, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3291,12 +3292,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1730311049452063403, guid: 2ed05d864c3c9c44cafdbb0a0e344ce1, type: 3}
+  m_Sprite: {fileID: 7732422846564433530, guid: b208a4961ffdfcd48871afc81f8a7d84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.27, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7284,6 +7285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa8723c16bac8a4b8101f3da7cfb3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAmount: 100
   moveSpeed: 1.35
   fallSpeed: 10
 --- !u!114 &675696552
@@ -10906,6 +10908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa8723c16bac8a4b8101f3da7cfb3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAmount: 100
   moveSpeed: 1.75
   fallSpeed: 10
 --- !u!114 &1125162690
