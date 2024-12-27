@@ -34,7 +34,7 @@ public class AnimatedController : MonoBehaviour
 
     public int DamageAmount = 35;
     public int DefenceScale;
-    public TimerScript timer;
+    
 
     private Rigidbody2D rb;
     private PlayerInputHandler inputHandler;
@@ -54,7 +54,7 @@ public class AnimatedController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab; // Bullet prefab
     [SerializeField] private Transform firePoint; // Bullet spawn point
     [SerializeField] public float bulletInterval = 0.5f; // Bullet creation interval
-    [SerializeField] public int bulletAmount = 100;
+    [SerializeField] public int timeAmount = 100;
     [SerializeField] private TMP_Text bulletHud;
 
     private float lastBulletTime = 0f; // Last bullet creation time
@@ -79,6 +79,8 @@ public class AnimatedController : MonoBehaviour
     private float damageBoostTimer = 0f; // Tracks time since last damage boost
     private float damageBoostInterval = 90f; // 2 minutes (120 seconds)
 
+    private float timer;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,13 +88,35 @@ public class AnimatedController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the player's SpriteRenderer component
     }
 
-    void Start()
+void Start()
+{
+    inputHandler = PlayerInputHandler.Instance;
+    fallVector = new Vector2(0, -Physics2D.gravity.y);
+    SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
+
+    // Start the time reduction coroutine
+    StartCoroutine(ReduceTimeOverTime());
+}
+
+private IEnumerator ReduceTimeOverTime()
+{
+    while (timeAmount > 0) // Run as long as timeAmount is greater than 0
     {
-        inputHandler = PlayerInputHandler.Instance;
-        fallVector = new Vector2(0, -Physics2D.gravity.y);
-        SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
-        //expThreshText.text = "/" + expThreshold.ToString();
+        yield return new WaitForSeconds(1); // Wait for 1 second
+        timeAmount--; // Reduce timeAmount by 1
+
+        // Update bullet HUD to reflect the current timeAmount
+        bulletHud.text = timeAmount.ToString();
     }
+
+    // If timeAmount reaches 0, handle player's death or other logic
+    if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+    {
+        deathMenu.SetActive(true);
+        Time.timeScale = 0;
+        isDead = true;
+    }
+}
 
 void Update()
 {
@@ -109,7 +133,7 @@ void Update()
     // Jump logic
     shouldJump = inputHandler.JumpTriggered && isGrounded;
 
-    bulletHud.text = bulletAmount.ToString();
+    bulletHud.text = timeAmount.ToString();
 
     // Apply fall speed increase when falling
     if (rb.linearVelocity.y < 0)
@@ -189,6 +213,10 @@ void Update()
         gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Update gun rotation based on mouse
         
     }
+
+    
+    
+    
 }
 
 // New method to make the player face the mouse while attacking
@@ -318,13 +346,13 @@ void ApplyMovement()
     // Bullet spawning function
     private void SpawnBullet()
     {
-        if (bulletAmount > 0)
+        if (timeAmount > 0)
         {
             // First bullet
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
             bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
-            bulletAmount--;
+            timeAmount--;
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
             gunAnim.SetTrigger("isAttack");
 
@@ -345,7 +373,6 @@ void ApplyMovement()
                 if(!isDead)
                 {
                 deathMenu.SetActive(true);
-                timer.StopTime();
                 Time.timeScale = 0;
                 isDead = true;
                 }
@@ -357,12 +384,11 @@ void ApplyMovement()
     private IEnumerator SpawnSecondBullet()
     {
         yield return new WaitForSeconds(0.1f); // 0.1 second delay
-        if (bulletAmount > 0)
+        if (timeAmount > 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
             bullet.transform.localScale = new Vector3(1.8f, 1f, 1f);
-            bulletAmount--;
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
         }
     }
@@ -449,15 +475,15 @@ void ApplyMovement()
         }
     }
 
-    public void GainBullet(int bullet)
+    public void GainBullet(int seconds)
     {
-        bulletAmount += bullet;
+        timeAmount += seconds;
         GameObject clone = Instantiate(DropText);
         clone.transform.position = DropText.transform.position;
         clone.transform.parent = DropText.transform.parent;
         clone.SetActive(true);
         clone.GetComponent<TMP_Text>().color = Color.green;
-        clone.GetComponent<TMP_Text>().text = "+" + bullet;
+        clone.GetComponent<TMP_Text>().text = "+" + seconds;
     }
 
     public void GainExp()
@@ -471,7 +497,7 @@ void ApplyMovement()
         SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
 
         // Reduce bulletAmount based on damage
-        bulletAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+        timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
 
         // Show damage on the screen
         GameObject clone = Instantiate(DropText);
@@ -482,7 +508,7 @@ void ApplyMovement()
         clone.GetComponent<TMP_Text>().text = DamageAmount.ToString();
 
         // Check if player has no bullets left
-        if (bulletAmount <= 0)
+        if (timeAmount <= 0)
         {
             // If resurrection is available, cancel the death
             if (resurrection > 0)
@@ -494,7 +520,6 @@ void ApplyMovement()
                 if(!isDead)
                 {// No resurrection available, show the death menu
                 deathMenu.SetActive(true);
-                timer.StopTime();
                 Time.timeScale = 0;
                 isDead = true;
                 }
@@ -505,7 +530,7 @@ void ApplyMovement()
     {
         // Cancel the death (reset player stats)
         resurrection--;  // Decrease resurrection count
-        bulletAmount = 100; // Restore bullet amount (you can set this to whatever value you want)
+        timeAmount = 100; // Restore bullet amount (you can set this to whatever value you want)
 
         // You can also restore other stats like health here if needed.
 
@@ -515,4 +540,6 @@ void ApplyMovement()
         Time.timeScale = 1;  // Resume time
         Debug.Log("Player resurrected! Remaining resurrections: " + resurrection);
     }
+
+    
 }

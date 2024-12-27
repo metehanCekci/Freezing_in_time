@@ -9,13 +9,13 @@ public class CharacterStats : MonoBehaviour
 
     private void OnEnable()
     {
-        Expmanager.Instance.OnExperienceChange += ExpChange;
+        //Expmanager.Instance.OnExperienceChange += ExpChange;
 
     }
 
     private void OnDisable()
     {
-        Expmanager.Instance.OnExperienceChange -= ExpChange;
+        //Expmanager.Instance.OnExperienceChange -= ExpChange;
     }
     private void ExpChange(int newExperience)
     {
