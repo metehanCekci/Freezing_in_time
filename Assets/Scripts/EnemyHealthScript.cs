@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyHealthScript : MonoBehaviour
 {
     public int hp = 2;
-    public int bulletReward = 5;
-    public int bulletRewardScale = 0;
+    public int timeReward = 5;
+    public int timeRewardScale = 0;
     public int exp = 50;
     
     public float offset;
     private GameObject player;
-    private GameObject SFXPlayer;
+    //private GameObject SFXPlayer;
+    private AudioManager audioManager;
     public GameObject explosion;
     private SpriteRenderer spriteRenderer;  // SpriteRenderer bileşeni için bir referans
 
@@ -20,7 +21,8 @@ public class EnemyHealthScript : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();  // SpriteRenderer bileşenini al
-        SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
+        //SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
+        audioManager = AudioManager.Instance; 
     }
 
     private void Awake()
@@ -31,7 +33,7 @@ public class EnemyHealthScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet")) //Snow
         {
             int roll = Random.Range(0,100);
 
@@ -74,8 +76,9 @@ public class EnemyHealthScript : MonoBehaviour
             if (hp <= 0)
             {
                 player.GetComponent<AnimatedController>().GainExp();
-                player.GetComponent<AnimatedController>().GainBullet(bulletReward += ((bulletReward/100) * bulletRewardScale));
-                SFXPlayer.gameObject.GetComponent<SFXScript>().PlayHit();
+                player.GetComponent<AnimatedController>().GainBullet(timeReward += ((timeReward/100) * timeRewardScale));
+                //SFXPlayer.gameObject.GetComponent<SFXScript>().PlayHit();
+                audioManager.PlaySFX("Hit");
                 Destroy(this.gameObject);
                 Expmanager.Instance.AddExperience(exp);
             }
@@ -96,7 +99,7 @@ public class EnemyHealthScript : MonoBehaviour
             if (hp <= 0)
             {
                 player.GetComponent<AnimatedController>().GainExp();
-                player.GetComponent<AnimatedController>().GainBullet(bulletReward);
+                player.GetComponent<AnimatedController>().GainBullet(timeReward);
                 Destroy(this.gameObject);
                 Expmanager.Instance.AddExperience(exp);
             }
