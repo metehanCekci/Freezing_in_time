@@ -12112,7 +12112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit: {fileID: 8300000, guid: da331622d21a09043a084f691cfb01ab, type: 3}
   damage: {fileID: 8300000, guid: fbf35a4695a58494187424542c2c4afa, type: 3}
-  gunshot: {fileID: 8300000, guid: a5b4d4d7296a8df4091853ec53c3bdf1, type: 3}
+  gunshot: {fileID: 8300000, guid: 13c37989fbe9605438b4a299d1dfefcd, type: 3}
 --- !u!1001 &384488558
 PrefabInstance:
   m_ObjectHideFlags: 0
