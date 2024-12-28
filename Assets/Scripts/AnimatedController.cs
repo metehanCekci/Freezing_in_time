@@ -293,14 +293,14 @@ public class AnimatedController : MonoBehaviour
         isGrounded = false;
         shouldJump = false;
 
-        if (verticalInput != 0)
+        /*if (verticalInput != 0)
         {
             anim.SetBool("isJumping", true);  
         }
         else
         {
             anim.SetBool("isJumping", false);  
-        };
+        };*/
     }
 
     // Aiming function
@@ -493,7 +493,7 @@ public class AnimatedController : MonoBehaviour
         }
         else
         {
-            timeAmount = 2f;
+            timeAmount = 1f;
 
         }*/
 
@@ -567,6 +567,8 @@ public class AnimatedController : MonoBehaviour
                     }
                 }
             }
+
+
         }
     }
 }
