@@ -484,7 +484,7 @@ public class AnimatedController : MonoBehaviour
         }
         else
         {
-            timeAmount = 2f;
+            timeAmount = 1f;
 
         }
 
@@ -558,6 +558,8 @@ public class AnimatedController : MonoBehaviour
                     }
                 }
             }
+
+
         }
     }
 }
