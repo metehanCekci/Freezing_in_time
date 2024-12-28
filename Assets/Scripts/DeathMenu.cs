@@ -15,6 +15,8 @@ public class DeathMenu : MonoBehaviour
     [SerializeField] private GameObject settingmenu;
     [Header("Menu before Settings")]
     //[SerializeField] private GameObject beforemenu;
+    [SerializeField] public GameObject spawnerScriptLeft;
+    [SerializeField] public GameObject spawnerScriptRight;
     private bool isSetting = false;
     
     [Header("Fade Elements")]
@@ -26,11 +28,15 @@ public class DeathMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spawnerScriptLeft.SetActive(true);
+        spawnerScriptRight.SetActive(true);
         guiElements.gameObject.SetActive(false);
         ctrlElements.gameObject.SetActive(false);
 
         // Ensure the fade image is not visible at the start
         fadeImage.gameObject.SetActive(false);
+        spawnerScriptLeft.GetComponent<Spawner>();
+        spawnerScriptRight.GetComponent<Spawner>();
     }
 
     // Update is called once per frame
@@ -93,7 +99,10 @@ public class DeathMenu : MonoBehaviour
         }
 
         // Once fade is complete, restart the scene
+        spawnerScriptLeft.SetActive(false);
+        spawnerScriptRight.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     // Coroutine to handle the fade-out and scene transition to the main menu

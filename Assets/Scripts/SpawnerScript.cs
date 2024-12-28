@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnHeight = 0f;  // Yaratıkların y eksenindeki pozisyonu
 
     private float nextSpawnTime = 0f;  // Bir sonraki yaratık spawn zamanı
-    private float bossSpawnTime = 30f;
+    public float bossSpawnTime = 30f;
     private float timeSinceLastLevelUp = 0f; // Seviye atlamadan geçen süre
     private int level = 0; // Spawner seviyesi
 
@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
                 spawnInterval = Random.Range(startingInterval-1,startingInterval+1);
         }
 
-        if(Time.time >= bossSpawnTime)
+        if(Time.timeSinceLevelLoad >= bossSpawnTime)
         {
             if(summonsBoss)
             {

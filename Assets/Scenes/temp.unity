@@ -6261,6 +6261,8 @@ MonoBehaviour:
   guiElements: {fileID: 1650858862}
   ctrlElements: {fileID: 336784226}
   settingmenu: {fileID: 0}
+  spawnerScriptLeft: {fileID: 1482471527}
+  spawnerScriptRight: {fileID: 83684634}
   fadeImage: {fileID: 1974205351}
   fadeDuration: 0.3
 --- !u!114 &206236309
