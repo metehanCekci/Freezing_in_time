@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42a809a207baf894f804a73b7b82695b
+guid: 1f7122b13e6072d4aaa9074aee436101
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,10 +122,10 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: bossyumruk
+  - name: BossSaat
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.6333334, y: -0.47413793}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -134,7 +134,7 @@ ScriptedImporter:
       y: 4
       width: 90
       height: 116
-    spriteID: 1410578ac2f826044a183eb1b86ac4dd
+    spriteID: 2468ecad718ecd540915721b1ea47730
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,13 +146,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -366765018
-    name: bossyumruk
+    guid: 126743034
+    name: BossSaat
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: bossyumruk
+    - name: BossSaat
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -160,7 +160,7 @@ ScriptedImporter:
         y: 55
         width: 90
         height: 116
-      spriteId: 1410578ac2f826044a183eb1b86ac4dd
+      spriteId: 2468ecad718ecd540915721b1ea47730
     linkedCells: []
     parentIndex: -1
   platformSettings:

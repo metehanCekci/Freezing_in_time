@@ -15,6 +15,8 @@ public class BossScript : MonoBehaviour
     private bool returnToPosition = false;
     public bool followPlayer = false;
     public GameObject laser;
+    private Animator animator;
+
 
     private float moveSpeed = 8f; // Speed at which the left hand follows
     private float slamDelay = 1f; // Time to wait before the attack is launched
@@ -24,10 +26,15 @@ public class BossScript : MonoBehaviour
     private void Awake()
     {
         // Cache the original position of the left hand
-        
+        animator = GetComponent<Animator>();
         
 
+        
+    }
+    public void animationEnded()
+    {
         RandomAttack();
+        animator.enabled = false;
     }
 
     private void FixedUpdate() {

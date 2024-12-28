@@ -17,7 +17,7 @@ public class AnimatedController : MonoBehaviour
     public float gunOffsetOnLeft = 0.5f;
     public bool doubleShot = false;
     public int resurrection = 0;
-    
+
     public Animator anim;
     public Animator gunAnim;
     [SerializeField] private float sprintMultiplier = 1.5f;
@@ -34,7 +34,7 @@ public class AnimatedController : MonoBehaviour
 
     public int DamageAmount = 35;
     public int DefenceScale;
-    
+
 
     private Rigidbody2D rb;
     private PlayerInputHandler inputHandler;
@@ -88,160 +88,160 @@ public class AnimatedController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the player's SpriteRenderer component
     }
 
-void Start()
-{
-    inputHandler = PlayerInputHandler.Instance;
-    fallVector = new Vector2(0, -Physics2D.gravity.y);
-    SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
+    void Start()
+    {
+        inputHandler = PlayerInputHandler.Instance;
+        fallVector = new Vector2(0, -Physics2D.gravity.y);
+        SFXPlayer = GameObject.FindGameObjectWithTag("SFX");
 
-    // Start the time reduction coroutine
-    StartCoroutine(ReduceTimeOverTime());
-}
+        // Start the time reduction coroutine
+        StartCoroutine(ReduceTimeOverTime());
+    }
     void Update()
-{
-    initialGunRotation = gunTransform.rotation;
-
-    DefenceScale = Convert.ToInt16(Math.Round((DamageAmount / 100.0) * 10));
-
-    // Joystick input
-    Vector2 joystickInput = touchJoystick.GetJoystickInput();
-
-    // Horizontal movement control
-    float horizontalInput = inputHandler.MoveInput.x;
-
-    // Jump logic
-    shouldJump = inputHandler.JumpTriggered && isGrounded;
-
-    bulletHud.text = timeAmount.ToString();
-
-    // Apply fall speed increase when falling
-    if (rb.linearVelocity.y < 0)
     {
-        rb.linearVelocity -= fallVector * fallMultiplier * Time.deltaTime;
+        initialGunRotation = gunTransform.rotation;
+
+        DefenceScale = Convert.ToInt16(Math.Round((DamageAmount / 100.0) * 10));
+
+        // Joystick input
+        Vector2 joystickInput = touchJoystick.GetJoystickInput();
+
+        // Horizontal movement control
+        float horizontalInput = inputHandler.MoveInput.x;
+
+        // Jump logic
+        shouldJump = inputHandler.JumpTriggered && isGrounded;
+
+        bulletHud.text = timeAmount.ToString();
+
+        // Apply fall speed increase when falling
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity -= fallVector * fallMultiplier * Time.deltaTime;
+        }
+
+        // Aim gun based on joystick input
+        if (Input.GetKeyDown(KeyCode.Mouse0) && SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            if (!GameObject.FindGameObjectWithTag("MobileControlHud") == false)
+            {
+                if (GameObject.FindGameObjectWithTag("MobileControlHud").activeInHierarchy == true)
+                {
+                    GameObject.FindGameObjectWithTag("MobileControlHud").SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            AimGun(joystickInput);
+        }
+
+        // Shooting logic
+        bool isShooting = Input.GetMouseButton(0) || joystickInput.sqrMagnitude > 0.1f; // Check if the player is shooting
+
+        if (isShooting)
+        {
+            anim.SetBool("isAttacking", true); // Set the attack animation on
+            gunAnim.SetBool("isAttacking", true);
+
+            if (Time.time - lastBulletTime >= bulletInterval)
+            {
+                SpawnBullet();
+                lastBulletTime = Time.time;
+            }
+
+            // Make the character face the mouse when attacking
+            FaceMouseWhileAttacking();
+        }
+        else
+        {
+            anim.SetBool("isAttacking", false); // Set the attack animation off
+            gunAnim.SetBool("isAttacking", false);
+
+            // Flip the sprite back based on movement
+            FlipSpriteBasedOnMovement(horizontalInput);
+        }
+
+        // Handle invincibility timer
+        if (isInvincible)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            if (invincibilityTimer <= 0)
+            {
+                isInvincible = false; // End invincibility
+                EnableEnemyCollision(); // Re-enable collisions with enemies after invincibility ends
+                RestorePlayerOpacity(); // Restore original opacity after invincibility ends
+            }
+        }
+
+        // Check if it's time to double the damage
+        damageBoostTimer += Time.deltaTime;
+        if (damageBoostTimer >= damageBoostInterval)
+        {
+            damageBoostTimer = 0f; // Reset the timer
+            DamageAmount = Mathf.CeilToInt(DamageAmount * 2.5f);
+        }
+
+        // Update gun rotation for desktop
+        if (SystemInfo.deviceType == DeviceType.Desktop) //here chat GPT
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Ensure z position is 0 for 2D
+            Vector3 direction = mousePosition - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Update gun rotation based on mouse
+
+        }
+
+
+
+
     }
 
-    // Aim gun based on joystick input
-    if (Input.GetKeyDown(KeyCode.Mouse0) && SystemInfo.deviceType == DeviceType.Desktop)
+    // New method to make the player face the mouse while attacking
+    private void FaceMouseWhileAttacking()
     {
-        if (!GameObject.FindGameObjectWithTag("MobileControlHud") == false)
+        if (gunAnim.GetBool("isAttacking"))
         {
-            if (GameObject.FindGameObjectWithTag("MobileControlHud").activeInHierarchy == true)
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Ensure z position is 0 for 2D
+            Vector3 direction = mousePosition - transform.position;
+
+            // Flip the sprite based on the mouse direction
+            if (direction.x < 0) // Mouse is on the left
             {
-                GameObject.FindGameObjectWithTag("MobileControlHud").SetActive(false);
+                // Offset the gun position to the right when the mouse is on the left side
+                gunTransform.localPosition = new Vector3(gunOffsetOnLeft, gunTransform.localPosition.y, gunTransform.localPosition.z);
+
+                if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                {
+                    this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                }
+            }
+            else // Mouse is on the right
+            {
+                // Reset gun position to its original position
+                gunTransform.localPosition = new Vector3(-0.303f, gunTransform.localPosition.y, gunTransform.localPosition.z);
+
+                if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                {
+                    this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
         }
     }
-    else
-    {
-        AimGun(joystickInput);
-    }
 
-    // Shooting logic
-    bool isShooting = Input.GetMouseButton(0) || joystickInput.sqrMagnitude > 0.1f; // Check if the player is shooting
-
-    if (isShooting)
+    private void FlipSpriteBasedOnMovement(float horizontalInput)
     {
-        anim.SetBool("isAttacking", true); // Set the attack animation on
-        gunAnim.SetBool("isAttacking", true);
-        
-        if (Time.time - lastBulletTime >= bulletInterval)
+        if (horizontalInput < 0)  // Moving left
         {
-            SpawnBullet();
-            lastBulletTime = Time.time;
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
-
-        // Make the character face the mouse when attacking
-        FaceMouseWhileAttacking();
-    }
-    else
-    {
-        anim.SetBool("isAttacking", false); // Set the attack animation off
-        gunAnim.SetBool("isAttacking", false);
-
-        // Flip the sprite back based on movement
-        FlipSpriteBasedOnMovement(horizontalInput);
-    }
-
-    // Handle invincibility timer
-    if (isInvincible)
-    {
-        invincibilityTimer -= Time.deltaTime;
-        if (invincibilityTimer <= 0)
+        else if (horizontalInput > 0)  // Moving right
         {
-            isInvincible = false; // End invincibility
-            EnableEnemyCollision(); // Re-enable collisions with enemies after invincibility ends
-            RestorePlayerOpacity(); // Restore original opacity after invincibility ends
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-
-    // Check if it's time to double the damage
-    damageBoostTimer += Time.deltaTime;
-    if (damageBoostTimer >= damageBoostInterval)
-    {
-        damageBoostTimer = 0f; // Reset the timer
-        DamageAmount = Mathf.CeilToInt(DamageAmount * 2.5f);
-    }
-    
-    // Update gun rotation for desktop
-    if (SystemInfo.deviceType == DeviceType.Desktop) //here chat GPT
-    {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Ensure z position is 0 for 2D
-        Vector3 direction = mousePosition - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Update gun rotation based on mouse
-        
-    }
-
-    
-    
-    
-}
-
-// New method to make the player face the mouse while attacking
-private void FaceMouseWhileAttacking()
-{
-    if (gunAnim.GetBool("isAttacking"))
-    {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Ensure z position is 0 for 2D
-        Vector3 direction = mousePosition - transform.position;
-
-        // Flip the sprite based on the mouse direction
-        if (direction.x < 0) // Mouse is on the left
-        {
-            // Offset the gun position to the right when the mouse is on the left side
-            gunTransform.localPosition = new Vector3(gunOffsetOnLeft, gunTransform.localPosition.y, gunTransform.localPosition.z);
-
-            if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
-            {
-                this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            }
-        }
-        else // Mouse is on the right
-        {
-            // Reset gun position to its original position
-            gunTransform.localPosition = new Vector3(-0.3f, gunTransform.localPosition.y, gunTransform.localPosition.z);
-
-            if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
-            {
-                this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-            }
-        }
-    }
-}
-
-private void FlipSpriteBasedOnMovement(float horizontalInput)
-{
-    if (horizontalInput < 0)  // Moving left
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
-    }
-    else if (horizontalInput > 0)  // Moving right
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-    }
-}
 
 
     void FixedUpdate()
@@ -251,37 +251,37 @@ private void FlipSpriteBasedOnMovement(float horizontalInput)
     }
 
     // Movement function
-void ApplyMovement()
-{
-    // Get horizontal input from player
-    float horizontalInput = inputHandler.MoveInput.x;
-
-    // If the player is moving horizontally, set isWalking to true, otherwise false
-    if (horizontalInput != 0)
+    void ApplyMovement()
     {
-        anim.SetBool("isWalking", true);  // Player is moving
-    }
-    else
-    {
-        anim.SetBool("isWalking", false);  // Player is not moving
-    }
+        // Get horizontal input from player
+        float horizontalInput = inputHandler.MoveInput.x;
 
-    // Movement speed
-    float speed = moveSpeed;
+        // If the player is moving horizontally, set isWalking to true, otherwise false
+        if (horizontalInput != 0)
+        {
+            anim.SetBool("isWalking", true);  // Player is moving
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);  // Player is not moving
+        }
 
-    // Apply movement using Rigidbody2D velocity
-    rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+        // Movement speed
+        float speed = moveSpeed;
 
-    // Flip the sprite depending on movement direction
-    if (horizontalInput < 0)  // Moving left
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        // Apply movement using Rigidbody2D velocity
+        rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+
+        // Flip the sprite depending on movement direction
+        if (horizontalInput < 0)  // Moving left
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (horizontalInput > 0)  // Moving right
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
-    else if (horizontalInput > 0)  // Moving right
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-    }
-}
 
 
     // Jump function
@@ -346,15 +346,15 @@ void ApplyMovement()
             {
                 UseResurrection();
             }
-            /*else
+            else
             {
-                if(!isDead)
+                if (!isDead)
                 {
-                deathMenu.SetActive(true);
-                Time.timeScale = 0;
-                isDead = true;
+                    deathMenu.SetActive(true);
+                    Time.timeScale = 0;
+                    isDead = true;
                 }
-            }*/
+            }
 
         }
     }
@@ -386,7 +386,8 @@ void ApplyMovement()
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision) {
+    void OnCollisionStay2D(Collision2D collision)
+    {
 
 
         if (collision.gameObject.CompareTag("HurtBox") && !isInvincible) // Check if the player is not invincible
@@ -395,8 +396,6 @@ void ApplyMovement()
             ActivateInvincibility(); // Activate invincibility after taking damage
         }
     }
-
-    // Activates invincibility for the player
     private void ActivateInvincibility()
     {
         isInvincible = true;
@@ -475,7 +474,22 @@ void ApplyMovement()
         SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
 
         // Reduce bulletAmount based on damage
-        timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+        if (timeAmount > (DamageAmount - ((DamageAmount / 100) * DefenceScale)))
+        {
+            timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+        }
+        else if (timeAmount > 0 && timeAmount <= 1)
+        {
+            timeAmount--;
+        }
+        else
+        {
+            timeAmount = 2f;
+
+        }
+
+
+
 
         // Show damage on the screen
         GameObject clone = Instantiate(DropText);
@@ -495,12 +509,12 @@ void ApplyMovement()
             }
             else
             {
-                /*if(!isDead)
-                {// No resurrection available, show the death menu
-                deathMenu.SetActive(true);
-                Time.timeScale = 0;
-                isDead = true;
-                }*/
+                if (!isDead)
+                {
+                    deathMenu.SetActive(true);
+                    Time.timeScale = 0;
+                    isDead = true;
+                }
             }
         }
     }
@@ -519,36 +533,31 @@ void ApplyMovement()
         Debug.Log("Player resurrected! Remaining resurrections: " + resurrection);
     }
 
-    private IEnumerator ReduceTimeOverTime()
+    IEnumerator ReduceTimeOverTime()
     {
-        while (timeAmount > 1)
+        while (true)
         {
-            if (timeAmount > 1)
-            {
-                yield return new WaitForSeconds(1);
-                timeAmount--;
-            }
-            else
-            {
-                // When time falls below 96, it decreases faster and game speed is reduced.
-                yield return new WaitForSeconds(0.01f);
-                timeAmount -= 0.01f;
+            Debug.Log("Time amount: " + timeAmount);
+            yield return new WaitForSeconds(1);
+            timeAmount--;
 
-                // Dynamically adjust the game's speed based on timeAmount.
-           
-                Time.timeScale = Mathf.Clamp(timeAmount / 100f, 0.5f, 1f);
-            }
+            if (timeAmount <= 1)
+            {
+                while (true)
+                {
+                    Debug.Log("Critical time! TimeAmount: " + timeAmount);
+                    yield return new WaitForSeconds(0.5f);
+                    timeAmount -= 0.01f;
 
-            // Update timer UI
-            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
-        }
-        
-        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
-        {
-            Debug.Log("METEHAN");
-            deathMenu.SetActive(true);
-            Time.timeScale = 0;
-            isDead = true;
+                    if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+                    {
+                        Debug.Log("Activating death menu.");
+                        deathMenu.SetActive(true);
+                        Time.timeScale = 0;
+                        isDead = true;
+                    }
+                }
+            }
         }
     }
 }
