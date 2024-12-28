@@ -536,15 +536,10 @@ void ApplyMovement()
 
     IEnumerator ReduceTimeOverTime()
     {
-
-
-
         while (true)
         {
-
                 yield return new WaitForSeconds(1);
                 timeAmount--;
-
             if (timeAmount <= 1)
             {
                 while(true)
@@ -555,7 +550,6 @@ void ApplyMovement()
 
                     if (timeAmount > 1)
                         break;
-
                     else if (timeAmount <= 0 && resurrection <= 0 && !isDead)
                     {
                         Debug.Log("METEHAN");
@@ -563,16 +557,8 @@ void ApplyMovement()
                         Time.timeScale = 0;
                         isDead = true;
                     }
-
                 }
-            }
-
-                
-
+            }             
         }
-
-
-
-
     }
 }
