@@ -37,7 +37,11 @@ public class FireBulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
         // Destroy the bullet when it collides with any object
-        Destroy(gameObject);
+        
     }
 }
