@@ -832,6 +832,7 @@ MonoBehaviour:
   summonsBoss: 0
   spawnRange: {x: -5, y: 5}
   spawnHeight: 2
+  bossSpawnTime: 30
   wt: {fileID: 669202855}
 --- !u!1 &121200524
 GameObject:
@@ -6091,7 +6092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &167621495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6339,8 +6340,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266.00003, y: 49.999992}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 266, y: 59.396}
+  m_SizeDelta: {x: 224.64, y: 299.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248287143
 MonoBehaviour:
@@ -29916,8 +29917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -275.00003, y: 53.000008}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -278.29, y: 59.396}
+  m_SizeDelta: {x: 231.21, y: 299.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972801465
 MonoBehaviour:
@@ -36971,10 +36972,10 @@ RectTransform:
   - {fileID: 46027487}
   m_Father: {fileID: 167621495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 52.000008}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0002822876, y: 59.199}
+  m_SizeDelta: {x: 124.64, y: 199.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464464893
 MonoBehaviour:
@@ -37124,6 +37125,7 @@ MonoBehaviour:
   summonsBoss: 1
   spawnRange: {x: -5, y: 5}
   spawnHeight: 2
+  bossSpawnTime: 40
   wt: {fileID: 669202855}
 --- !u!1 &1485798616 stripped
 GameObject:
@@ -70799,7 +70801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2120494140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70816,7 +70818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25.330017}
+  m_AnchoredPosition: {x: 112.6, y: -35.33}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120494141
