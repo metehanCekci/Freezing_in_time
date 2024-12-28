@@ -292,6 +292,15 @@ public class AnimatedController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
         shouldJump = false;
+
+        if (verticalInput != 0)
+        {
+            anim.SetBool("isJumping", true);  
+        }
+        else
+        {
+            anim.SetBool("isJumping", false);  
+        };
     }
 
     // Aiming function
