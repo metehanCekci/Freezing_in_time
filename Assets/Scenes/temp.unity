@@ -12776,7 +12776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Oyun durduruldu
+  m_text: Oyun donduruldu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 33a4cfe09c6ac784b957f0cbc131ee95, type: 2}
   m_sharedMaterial: {fileID: 1755109666947865505, guid: 33a4cfe09c6ac784b957f0cbc131ee95, type: 2}
@@ -12785,8 +12785,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18314,7 +18314,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1999399159}
         m_TargetAssemblyTypeName: durdur, Assembly-CSharp
         m_MethodName: cikis
         m_Mode: 1
