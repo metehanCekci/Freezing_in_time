@@ -61,17 +61,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Saldırı hızı+%10";
+                    upgrade1.GetComponent<TMP_Text>().text = "SALDIRI HIZI +%10";
                     upgrade1ID = 0;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Saldırı hızı+%10";
+                    upgrade2.GetComponent<TMP_Text>().text = "SALDIRI HIZI +%10";
                     upgrade2ID = 0;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Saldırı hızı+%10";
+                    upgrade3.GetComponent<TMP_Text>().text = "SALDIRI HIZI +%10";
                     upgrade3ID = 0;
                 }
             }
@@ -85,17 +85,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Saldırı hasarı +%15";
+                    upgrade1.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
                     upgrade1ID = 1;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Saldırı hasarı +%15";
+                    upgrade2.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
                     upgrade2ID = 1;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Saldırı hasarı +%15";
+                    upgrade3.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
                     upgrade3ID = 1;
                 }
             }
@@ -109,17 +109,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Hareket hızı +%50";
+                    upgrade1.GetComponent<TMP_Text>().text = "HAREKET HIZI +%50";
                     upgrade1ID = 2;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Hareket hızı +%50";
+                    upgrade2.GetComponent<TMP_Text>().text = "HAREKET HIZI +%50";
                     upgrade2ID = 2;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Hareket hızı +%50";
+                    upgrade3.GetComponent<TMP_Text>().text = "HAREKET HIZI +%50";
                     upgrade3ID = 2;
                 }
             }
@@ -133,17 +133,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Defans +%25";
+                    upgrade1.GetComponent<TMP_Text>().text = "DEFANS +%25";
                     upgrade1ID = 3;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Defans +%25";
+                    upgrade2.GetComponent<TMP_Text>().text = "DEFANS +%25";
                     upgrade2ID = 3;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Defans +%25";
+                    upgrade3.GetComponent<TMP_Text>().text = "DEFANS +%25";
                     upgrade3ID = 3;
                 }
             }
@@ -157,17 +157,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Mermi ödülü +%50";
+                    upgrade1.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
                     upgrade1ID = 4;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Mermi ödülü +%50";
+                    upgrade2.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
                     upgrade2ID = 4;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Mermi ödülü +%50";
+                    upgrade3.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
                     upgrade3ID = 4;
                 }
             }
@@ -181,17 +181,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Yakan top +1";
+                    upgrade1.GetComponent<TMP_Text>().text = "YAKAN TOP +1";
                     upgrade1ID = 5;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Yakan top +1";
+                    upgrade2.GetComponent<TMP_Text>().text = "YAKAN TOP +1";
                     upgrade2ID = 5;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Yakan top +1";
+                    upgrade3.GetComponent<TMP_Text>().text = "YAKAN TOP +1";
                     upgrade3ID = 5;
                 }
             }
@@ -205,17 +205,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Ölümsüzlük süresi +6s";
+                    upgrade1.GetComponent<TMP_Text>().text = "OLUMSUZLUK SURESI +6s";
                     upgrade1ID = 6;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Ölümsüzlük süresi +6s";
+                    upgrade2.GetComponent<TMP_Text>().text = "OLUMSUZLUK SURESI +6s";
                     upgrade2ID = 6;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Ölümsüzlük süresi +6s";
+                    upgrade3.GetComponent<TMP_Text>().text = "OLUMSUZLUK SURESI +6s";
                     upgrade3ID = 6;
                 }
             }
@@ -229,17 +229,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Düşman delme +1";
+                    upgrade1.GetComponent<TMP_Text>().text = "DUSMAN DELME +1";
                     upgrade1ID = 7;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Düşman delme +1";
+                    upgrade2.GetComponent<TMP_Text>().text = "DUSMAN DELME +1";
                     upgrade2ID = 7;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Düşman delme +1";
+                    upgrade3.GetComponent<TMP_Text>().text = "DUSMAN DELME +1";
                     upgrade3ID = 7;
                 }
             }
@@ -255,17 +255,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Saçmalı ateş+1";
+                    upgrade1.GetComponent<TMP_Text>().text = "SACMALI ATES +1";
                     upgrade1ID = 8;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Saçmalı ateş+1";
+                    upgrade2.GetComponent<TMP_Text>().text = "SACMALI ATES +1";
                     upgrade2ID = 8;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Saçmalı ateş+1";
+                    upgrade3.GetComponent<TMP_Text>().text = "SACMALI ATES +1";
                     upgrade3ID = 8;
                 }
             }
@@ -280,17 +280,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Silah Sekmesi+1";
+                    upgrade1.GetComponent<TMP_Text>().text = "SILAH SEKMESI +1";
                     upgrade1ID = 9;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Silah Sekmesi+1";
+                    upgrade2.GetComponent<TMP_Text>().text = "SILAH SEKMESI +1";
                     upgrade2ID = 9;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Silah Sekmesi+1";
+                    upgrade3.GetComponent<TMP_Text>().text = "SILAH SEKMESI +1";
                     upgrade3ID = 9;
                 }
             }
@@ -305,17 +305,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Kritik şansı +%40";
+                    upgrade1.GetComponent<TMP_Text>().text = "KRITIK SANSI +%40";
                     upgrade1ID = 10;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Kritik şansı +%40";
+                    upgrade2.GetComponent<TMP_Text>().text = "KRITIK SANSI +%40";
                     upgrade2ID = 10;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Kritik şansı +%40";
+                    upgrade3.GetComponent<TMP_Text>().text = "KRITIK SANSI +%40";
                     upgrade3ID = 10;
                 }
             }
@@ -329,17 +329,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Kritik hasarı +%50";
+                    upgrade1.GetComponent<TMP_Text>().text = "KRITIK HASARI +%50";
                     upgrade1ID = 11;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Kritik hasarı +%50";
+                    upgrade2.GetComponent<TMP_Text>().text = "KRITIK HASARI +%50";
                     upgrade2ID = 11;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Kritik hasarı +%50";
+                    upgrade3.GetComponent<TMP_Text>().text = "KRITIK HASARI +%50";
                     upgrade3ID = 11;
                 }
             }
@@ -354,17 +354,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Saçma açısı -%50";
+                    upgrade1.GetComponent<TMP_Text>().text = "SACMA ACISI -%50";
                     upgrade1ID = 12;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Saçma açısı -%50";
+                    upgrade2.GetComponent<TMP_Text>().text = "SACMA ACISI -%50";
                     upgrade2ID = 12;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Saçma açısı -%50";
+                    upgrade3.GetComponent<TMP_Text>().text = "SACMA ACISI -%50";
                     upgrade3ID = 12;
                 }
             }
@@ -379,17 +379,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Exp çarpanı +%25";
+                    upgrade1.GetComponent<TMP_Text>().text = "EXP CARPANI +%25";
                     upgrade1ID = 13;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Exp çarpanı +%25";
+                    upgrade2.GetComponent<TMP_Text>().text = "EXP CARPANI +%25";
                     upgrade2ID = 13;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Exp çarpanı +%25";
+                    upgrade3.GetComponent<TMP_Text>().text = "EXP CARPANI +%25";
                     upgrade3ID = 13;
                 }
             }
@@ -404,17 +404,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Patlayan mermi";
+                    upgrade1.GetComponent<TMP_Text>().text = "PATLAYAN MERMI";
                     upgrade1ID = 14;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Patlayan mermi";
+                    upgrade2.GetComponent<TMP_Text>().text = "PATLAYAN MERMI";
                     upgrade2ID = 14;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Patlayan mermi";
+                    upgrade3.GetComponent<TMP_Text>().text = "PATLAYAN MERMI";
                     upgrade3ID = 14;
                 }
             }
@@ -429,17 +429,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Patlayan hasar +%100";
+                    upgrade1.GetComponent<TMP_Text>().text = "PATLAYAN HASAR +%100";
                     upgrade1ID = 15;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Patlayan hasar +%100";
+                    upgrade2.GetComponent<TMP_Text>().text = "PATLAYAN HASAR +%100";
                     upgrade2ID = 15;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Patlayan hasar +%100";
+                    upgrade3.GetComponent<TMP_Text>().text = "PATLAYAN HASAR +%100";
                     upgrade3ID = 15;
                 }
             }
@@ -454,17 +454,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "İkili vuruş";
+                    upgrade1.GetComponent<TMP_Text>().text = "IKILI VURUS";
                     upgrade1ID = 16;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "İkili vuruş";
+                    upgrade2.GetComponent<TMP_Text>().text = "IKILI VURUS";
                     upgrade2ID = 16;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "İkili vuruş";
+                    upgrade3.GetComponent<TMP_Text>().text = "IKILI VURUS";
                     upgrade3ID = 16;
                 }
             }
@@ -474,17 +474,17 @@ public class LevelUpSystem : MonoBehaviour
 
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "Yeniden doğma +1";
+                    upgrade1.GetComponent<TMP_Text>().text = "YENIDEN DOGMA +1";
                     upgrade1ID = 17;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "Yeniden doğma +1";
+                    upgrade2.GetComponent<TMP_Text>().text = "YENIDEN DOGMA +1";
                     upgrade2ID = 17;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "Yeniden doğma +1";
+                    upgrade3.GetComponent<TMP_Text>().text = "YENIDEN DOGMA +1";
                     upgrade3ID = 17;
                 }
             }
