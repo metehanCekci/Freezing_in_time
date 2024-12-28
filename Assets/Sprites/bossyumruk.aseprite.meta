@@ -124,8 +124,13 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: bossyumruk
     originalName: 
+<<<<<<< HEAD
     pivot: {x: 0.6333334, y: -0.47413793}
     alignment: 9
+=======
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+>>>>>>> de768552caab1ca78eed3e03551b831f79eed7f3
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
