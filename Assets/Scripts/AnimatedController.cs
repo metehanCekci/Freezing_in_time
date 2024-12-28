@@ -472,9 +472,9 @@ public class AnimatedController : MonoBehaviour
     {
         // Play damage sound
         SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
+        timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
 
-        // Reduce bulletAmount based on damage
-        if (timeAmount > (DamageAmount - ((DamageAmount / 100) * DefenceScale)))
+        /*if (timeAmount > (DamageAmount - ((DamageAmount / 100) * DefenceScale)))
         {
             timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
         }
@@ -486,7 +486,7 @@ public class AnimatedController : MonoBehaviour
         {
             timeAmount = 2f;
 
-        }
+        }*/
 
 
 
@@ -545,9 +545,9 @@ public class AnimatedController : MonoBehaviour
             {
                 while (true)
                 {
-                    Debug.Log("Critical time! TimeAmount: " + timeAmount);
+                    /*Debug.Log("Critical time! TimeAmount: " + timeAmount);
                     yield return new WaitForSeconds(0.5f);
-                    timeAmount -= 0.01f;
+                    timeAmount -= 0.01f;*/
 
                     if (timeAmount <= 0 && resurrection <= 0 && !isDead)
                     {
