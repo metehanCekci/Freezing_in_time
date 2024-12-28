@@ -83,7 +83,7 @@ public class BossScript : MonoBehaviour
         followPlayer = true;
         yield return new WaitForSeconds(0.7f);
         followPlayer = false;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
 
         if (handIsLeft)
         {
@@ -146,7 +146,7 @@ public class BossScript : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         RandomAttack();
     }
 }
