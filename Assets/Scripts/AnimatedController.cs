@@ -475,7 +475,22 @@ void ApplyMovement()
         SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
 
         // Reduce bulletAmount based on damage
-        timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+        if (timeAmount > (DamageAmount - ((DamageAmount / 100) * DefenceScale)))
+        {
+            timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+        }
+        else if (timeAmount > 0 && timeAmount <= 1)
+        {
+            timeAmount--;
+        }
+        else
+        {
+            timeAmount = 2f;
+            
+        }
+        
+
+       
 
         // Show damage on the screen
         GameObject clone = Instantiate(DropText);
@@ -519,33 +534,45 @@ void ApplyMovement()
         Debug.Log("Player resurrected! Remaining resurrections: " + resurrection);
     }
 
-    private IEnumerator ReduceTimeOverTime()
+    IEnumerator ReduceTimeOverTime()
     {
-        while (timeAmount >= 1)
+
+
+
+        while (true)
         {
-            if (timeAmount >= 1)
-            {
+
                 yield return new WaitForSeconds(1);
                 timeAmount--;
-            }
-            else
-            {
-                // When time falls below 96, it decreases faster and game speed is reduced.
-                yield return new WaitForSeconds(0.01f);
-                timeAmount -= 0.1f;
 
-                // Dynamically adjust the game's speed based on timeAmount.
-           
+            if (timeAmount <= 1)
+            {
+                while(true)
+                { 
+                yield return new WaitForSeconds(0.5f);
+                timeAmount -= 0.01f;
                 Time.timeScale = Mathf.Clamp(timeAmount / 100f, 0.5f, 1f);
-            }          
+
+                    if (timeAmount > 1)
+                        break;
+
+                    else if (timeAmount <= 0 && resurrection <= 0 && !isDead)
+                    {
+                        Debug.Log("METEHAN");
+                        deathMenu.SetActive(true);
+                        Time.timeScale = 0;
+                        isDead = true;
+                    }
+
+                }
+            }
+
+                
+
         }
-        
-        if (timeAmount <= 0 && resurrection <= 0 && !isDead)
-        {
-            Debug.Log("METEHAN");
-            deathMenu.SetActive(true);
-            Time.timeScale = 0;
-            isDead = true;
-        }
+
+
+
+
     }
 }
