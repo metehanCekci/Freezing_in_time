@@ -7,6 +7,7 @@ public class FlyEnemyAi : MonoBehaviour
     public float attackRange = 10f; // Saldırı menzili
     private Transform player; // Oyuncunun transform'u
     public GameObject bullet; // Saldırı için mermi prefab'ı
+    private SpriteRenderer spriteRenderer;
     private bool isInAttackRange = false; // Menzilde olup olmadığını kontrol etmek için
 
     private float cooldownTime = 3f; // Saldırı arasındaki bekleme süresi
@@ -16,6 +17,7 @@ public class FlyEnemyAi : MonoBehaviour
     {
         // Oyuncuyu 'Player' tag'ı ile bul
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -56,6 +58,8 @@ public class FlyEnemyAi : MonoBehaviour
 
         // Düşman rotasını yavaşça değiştirecek
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        
+        
 
         // Düşman oyuncuya doğru hareket ediyor
         transform.Translate(direction * followSpeed * Time.deltaTime, Space.World);

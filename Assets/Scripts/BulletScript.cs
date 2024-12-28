@@ -12,6 +12,7 @@ public class BulletScript : MonoBehaviour
     public int criticalDamage = 50; // %50
     public int criticalChance = 10; // %10
 
+
     [Header("Spread Shot Settings")]
     public int spreadCount = 1; // Number of bullets to spread (1 means normal, 3 means spread shot)
     public float spreadAngle = 10f; // Angle between the spread bullets
