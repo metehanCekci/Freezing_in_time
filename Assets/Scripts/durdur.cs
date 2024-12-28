@@ -17,9 +17,12 @@ public class durdur : MonoBehaviour
     }
     public void cikis()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
-
+    public void kapat()
+    {
+        Application.Quit();
+    }
 
     // Update is called once per frame
     void Update()
