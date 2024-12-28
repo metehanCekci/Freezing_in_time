@@ -21,7 +21,7 @@ public class FlyEnemyAi : MonoBehaviour
     }
     private void Start()
     {
-        spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
