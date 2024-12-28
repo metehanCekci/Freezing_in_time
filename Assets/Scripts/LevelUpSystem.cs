@@ -157,17 +157,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
+                    upgrade1.GetComponent<TMP_Text>().text = "ZAMAN ODULU +%50";
                     upgrade1ID = 4;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
+                    upgrade2.GetComponent<TMP_Text>().text = "ZAMAN ODULU +%50";
                     upgrade2ID = 4;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "MERMI ODULU +%50";
+                    upgrade3.GetComponent<TMP_Text>().text = "ZAMAN ODULU +%50";
                     upgrade3ID = 4;
                 }
             }

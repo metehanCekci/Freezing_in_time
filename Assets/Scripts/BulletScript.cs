@@ -47,6 +47,7 @@ public class BulletScript : MonoBehaviour
         {
             SpreadShot();
         }
+
     }
 
     // Function to spread the shot into multiple bullets
@@ -120,5 +121,4 @@ public class BulletScript : MonoBehaviour
                 AngledRicochet();
             }
         }*/
-
 }

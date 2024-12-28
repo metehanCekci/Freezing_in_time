@@ -102,6 +102,7 @@ public class EnemyHealthScript : MonoBehaviour
                 player.GetComponent<AnimatedController>().GainBullet(timeReward);
                 Destroy(this.gameObject);
                 Expmanager.Instance.AddExperience(exp);
+
             }
         }
     }
