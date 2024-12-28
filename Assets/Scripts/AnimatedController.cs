@@ -523,7 +523,7 @@ void ApplyMovement()
     {
         while (timeAmount > 1)
         {
-            if (timeAmount > 1)
+            if (timeAmount > 30)
             {
                 yield return new WaitForSeconds(1);
                 timeAmount--;
@@ -532,7 +532,7 @@ void ApplyMovement()
             {
                 // When time falls below 96, it decreases faster and game speed is reduced.
                 yield return new WaitForSeconds(0.01f);
-                timeAmount -= 0.01f;
+                timeAmount -= 0.1f;
 
                 // Dynamically adjust the game's speed based on timeAmount.
            
@@ -540,7 +540,7 @@ void ApplyMovement()
             }
 
             // Update timer UI
-            bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();
+            /*bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();*/
         }
         
         if (timeAmount <= 0 && resurrection <= 0 && !isDead)
