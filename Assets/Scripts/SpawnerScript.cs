@@ -5,12 +5,19 @@ public class Spawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
     [SerializeField] public GameObject[] enemies;  // Yaratıkların dizisi
-    [SerializeField] private float spawnInterval = 5f; // Yaratık çağırma aralığı
+
+    public GameObject player;
+    public GameObject boss;
+    [SerializeField] private float spawnInterval = 5f;
+ // Yaratık çağırma aralığı
+
+    public bool summonsBoss = false;
     private float startingInterval;
     [SerializeField] private Vector2 spawnRange = new Vector2(-5f, 5f);  // Yaratıkların spawn olacağı x ekseni aralığı
     [SerializeField] private float spawnHeight = 0f;  // Yaratıkların y eksenindeki pozisyonu
 
     private float nextSpawnTime = 0f;  // Bir sonraki yaratık spawn zamanı
+    private float bossSpawnTime = 5f;
     private float timeSinceLastLevelUp = 0f; // Seviye atlamadan geçen süre
     private int level = 0; // Spawner seviyesi
 
@@ -31,6 +38,22 @@ public class Spawner : MonoBehaviour
                 startingInterval -= 0.03f;
             if(startingInterval>1.25f)
                 spawnInterval = Random.Range(startingInterval-1,startingInterval+1);
+        }
+
+        if(Time.time >= bossSpawnTime)
+        {
+            if(summonsBoss)
+            {
+            GameObject clone = Instantiate(boss);
+            clone.transform.position = player.transform.position;        
+            clone.SetActive(true);
+
+            boss.GetComponent<EnemyHealthScript>().hp = Mathf.CeilToInt(clone.GetComponent<EnemyHealthScript>().hp*1.45f);
+            boss.GetComponent<EnemyHealthScript>().exp = Mathf.CeilToInt(clone.GetComponent<EnemyHealthScript>().exp*1.5f);
+            boss.GetComponent<EnemyHealthScript>().timeReward = Mathf.CeilToInt(boss.GetComponent<EnemyHealthScript>().timeReward*1.2f);
+
+            bossSpawnTime += bossSpawnTime;
+            }
         }
 
         // Seviye atlamak için 5 dakika geçip geçmediğini kontrol et
