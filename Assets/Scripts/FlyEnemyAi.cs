@@ -17,6 +17,10 @@ public class FlyEnemyAi : MonoBehaviour
     {
         // Oyuncuyu 'Player' tag'ı ile bul
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+    }
+    private void Start()
+    {
         spriteRenderer = spriteRenderer.GetComponent<SpriteRenderer>();
     }
 
@@ -36,6 +40,14 @@ public class FlyEnemyAi : MonoBehaviour
             {
                 FollowPlayer();
 
+            }
+            if (gameObject.transform.localRotation.eulerAngles.z > 90 && gameObject.transform.localRotation.eulerAngles.z < 270)
+            {
+                spriteRenderer.flipY = true;
+            }
+            else
+            {
+                spriteRenderer.flipY = false;
             }
         }
 

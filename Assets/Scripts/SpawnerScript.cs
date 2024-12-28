@@ -93,6 +93,11 @@ public class Spawner : MonoBehaviour
             clone.transform.position = new Vector3(this.transform.position.x, spawnHeight, 0); // Spawn Y pozisyonu da belirtildi
 
             clone.SetActive(true);
+            if (clone.gameObject.GetComponent<FlyEnemyAi>() != null) 
+            {
+                clone.GetComponent<FlyEnemyAi>().enabled = true;
+            }
+            
         }
     }
 }
