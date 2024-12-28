@@ -12,6 +12,6 @@ public class followScript : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
 
         // Move the object towards the desired position at a constant speed
-        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(desiredPosition.x,transform.position.y,0), speed * Time.deltaTime);
     }
 }
