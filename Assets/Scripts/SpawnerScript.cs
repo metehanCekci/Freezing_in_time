@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnHeight = 0f;  // Yaratıkların y eksenindeki pozisyonu
 
     private float nextSpawnTime = 0f;  // Bir sonraki yaratık spawn zamanı
-    private float bossSpawnTime = 5f;
+    private float bossSpawnTime = 30f;
     private float timeSinceLastLevelUp = 0f; // Seviye atlamadan geçen süre
     private int level = 0; // Spawner seviyesi
 
