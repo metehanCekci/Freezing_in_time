@@ -124,13 +124,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: bossyumruk
     originalName: 
-<<<<<<< HEAD
     pivot: {x: 0.6333334, y: -0.47413793}
     alignment: 9
-=======
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
->>>>>>> de768552caab1ca78eed3e03551b831f79eed7f3
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -139,7 +134,7 @@ ScriptedImporter:
       y: 4
       width: 90
       height: 116
-    spriteID: 36c0115282fba9246a0dbbd8bff9ba24
+    spriteID: 1410578ac2f826044a183eb1b86ac4dd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -165,7 +160,7 @@ ScriptedImporter:
         y: 55
         width: 90
         height: 116
-      spriteId: 36c0115282fba9246a0dbbd8bff9ba24
+      spriteId: 1410578ac2f826044a183eb1b86ac4dd
     linkedCells: []
     parentIndex: -1
   platformSettings:

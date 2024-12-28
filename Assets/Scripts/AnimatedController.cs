@@ -221,7 +221,7 @@ private void FaceMouseWhileAttacking()
         else // Mouse is on the right
         {
             // Reset gun position to its original position
-            gunTransform.localPosition = new Vector3(-0.3f, gunTransform.localPosition.y, gunTransform.localPosition.z);
+            gunTransform.localPosition = new Vector3(-0.303f, gunTransform.localPosition.y, gunTransform.localPosition.z);
 
             if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
@@ -537,10 +537,7 @@ void ApplyMovement()
                 // Dynamically adjust the game's speed based on timeAmount.
            
                 Time.timeScale = Mathf.Clamp(timeAmount / 100f, 0.5f, 1f);
-            }
-
-            // Update timer UI
-            /*bulletHud.text = Mathf.CeilToInt(timeAmount).ToString();*/
+            }          
         }
         
         if (timeAmount <= 0 && resurrection <= 0 && !isDead)
