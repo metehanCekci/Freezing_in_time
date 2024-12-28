@@ -124,7 +124,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: anivia
     originalName: 
-    pivot: {x: 0.5076923, y: -0.5480769}
+    pivot: {x: 0.20317146, y: 0.28391755}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -145,7 +145,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.5076923, y: -0.76315784}
+    pivot: {x: 0.20148133, y: 0.37067553}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -166,7 +166,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 116}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.5510204, y: -0.9047619}
+    pivot: {x: 0.2770358, y: 0.40356737}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -187,7 +187,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 284}
   - name: Frame_3
     originalName: 
-    pivot: {x: 0.5076923, y: -0.76315784}
+    pivot: {x: 0.16905898, y: 0.41997287}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 

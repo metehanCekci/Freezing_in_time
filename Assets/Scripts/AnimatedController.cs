@@ -221,7 +221,7 @@ private void FaceMouseWhileAttacking()
         else // Mouse is on the right
         {
             // Reset gun position to its original position
-            gunTransform.localPosition = new Vector3(-0.303f, gunTransform.localPosition.y, gunTransform.localPosition.z);
+            gunTransform.localPosition = new Vector3(-0.3f, gunTransform.localPosition.y, gunTransform.localPosition.z);
 
             if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
             {
