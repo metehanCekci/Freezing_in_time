@@ -45,12 +45,12 @@ public class Spawner : MonoBehaviour
             if(summonsBoss)
             {
             GameObject clone = Instantiate(boss);
-            clone.transform.position = player.transform.position;        
+                clone.transform.position = new Vector3(player.transform.position.x, clone.transform.position.y, 0.0f);    
             clone.SetActive(true);
 
-            boss.GetComponent<EnemyHealthScript>().hp = Mathf.CeilToInt(clone.GetComponent<EnemyHealthScript>().hp*1.45f);
-            boss.GetComponent<EnemyHealthScript>().exp = Mathf.CeilToInt(clone.GetComponent<EnemyHealthScript>().exp*1.5f);
-            boss.GetComponent<EnemyHealthScript>().timeReward = Mathf.CeilToInt(boss.GetComponent<EnemyHealthScript>().timeReward*1.2f);
+            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp*1.45f);
+            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp*1.5f);
+            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().timeReward = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().timeReward*1.2f);
 
             bossSpawnTime += bossSpawnTime;
             }

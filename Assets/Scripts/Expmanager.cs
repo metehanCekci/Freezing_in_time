@@ -10,7 +10,7 @@ public class Expmanager : MonoBehaviour
     public LevelDisplay lvl;
     private float currentXp = 0;
     public int expMultiplier = 0;
-    private float maxXp = 100;
+    private float maxXp = 50;
     private ProgressBar progressBar;
 
     private void Awake()

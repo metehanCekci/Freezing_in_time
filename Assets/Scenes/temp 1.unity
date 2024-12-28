@@ -920,7 +920,10 @@ MonoBehaviour:
   - {fileID: 1125162688}
   - {fileID: 1104104965}
   - {fileID: 675696549}
+  player: {fileID: 0}
+  boss: {fileID: 0}
   spawnInterval: 4.5
+  summonsBoss: 0
   spawnRange: {x: -5, y: 5}
   spawnHeight: 2
   wt: {fileID: 669202855}
@@ -14060,7 +14063,10 @@ MonoBehaviour:
   - {fileID: 1125162688}
   - {fileID: 1104104965}
   - {fileID: 675696549}
+  player: {fileID: 0}
+  boss: {fileID: 0}
   spawnInterval: 4
+  summonsBoss: 0
   spawnRange: {x: -5, y: 5}
   spawnHeight: 2
   wt: {fileID: 669202855}
