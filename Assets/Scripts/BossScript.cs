@@ -10,13 +10,13 @@ public class BossScript : MonoBehaviour
     public Sprite openedHand;
     public GameObject rightHand;
     public Transform player; // Reference to the player transform
-    private Vector3 originalLeftHandPosition;
-    private Vector3 originalRightHandPosition;
+    public Transform originalLeftHandPosition;
+    public Transform originalRightHandPosition;
     private bool returnToPosition = false;
     public bool followPlayer = false;
     public GameObject laser;
 
-    private float moveSpeed = 5f; // Speed at which the left hand follows
+    private float moveSpeed = 8f; // Speed at which the left hand follows
     private float slamDelay = 1f; // Time to wait before the attack is launched
     private float slamDuration = 1f; // Time to wait before the hand returns
     private bool isSlamAttacking = false; // Whether the attack is in progress
@@ -26,8 +26,7 @@ public class BossScript : MonoBehaviour
         // Cache the original position of the left hand
         
         
-            originalLeftHandPosition = leftHand.transform.parent.position;
-            originalRightHandPosition = rightHand.transform.parent.position;
+
         RandomAttack();
     }
 
@@ -47,11 +46,11 @@ public class BossScript : MonoBehaviour
         {
             if(handIsLeft)
             {
-                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, originalLeftHandPosition, 1 * moveSpeed * Time.deltaTime);
+                leftHand.transform.parent.position = Vector3.MoveTowards(leftHand.transform.parent.position, originalLeftHandPosition.transform.position, 1 * moveSpeed * Time.deltaTime);
             }
             else
             {
-                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, originalRightHandPosition, 1* moveSpeed * Time.deltaTime);
+                rightHand.transform.parent.position = Vector3.MoveTowards(rightHand.transform.parent.position, originalRightHandPosition.transform.position, 1* moveSpeed * Time.deltaTime);
             }
         }
     }
@@ -72,6 +71,8 @@ public class BossScript : MonoBehaviour
 
     IEnumerator SlamAttack()
     {
+
+
         followPlayer = true;
         yield return new WaitForSeconds(0.7f);
         followPlayer = false;
@@ -79,17 +80,25 @@ public class BossScript : MonoBehaviour
 
         if (handIsLeft)
         {
+            leftHand.GetComponent<CircleCollider2D>().enabled = true;
             leftHand.GetComponent<Animator>().SetBool("isAttacking",true);
             leftHand.GetComponent<SpriteRenderer>().sprite = closedHand;
         }
         else
         {
+            rightHand.GetComponent<CircleCollider2D>().enabled = true;
             rightHand.GetComponent<Animator>().SetBool("isAttacking",true);
             rightHand.GetComponent<SpriteRenderer>().sprite = closedHand;
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
+        
+        leftHand.GetComponent<CircleCollider2D>().enabled = false;
+        rightHand.GetComponent<CircleCollider2D>().enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
         returnToPosition = true;
+
         yield return new WaitForSeconds(1);
         returnToPosition = false;
 
@@ -97,6 +106,8 @@ public class BossScript : MonoBehaviour
 
         leftHand.GetComponent<SpriteRenderer>().sprite = openedHand;
         rightHand.GetComponent<SpriteRenderer>().sprite = openedHand;
+
+
 
         StartCoroutine("CoolDown");
     }
