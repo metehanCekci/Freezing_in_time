@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc242bfaeb09ef54f8a1e519a1fa2943
+guid: 76844b18cdfcf5c4abec43136769677b
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,9 +122,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: tryagainbutton
     originalName: 
-    pivot: {x: 0.5076923, y: -1.1964285}
+    pivot: {x: 0.5076923, y: -1.1428571}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -134,7 +134,7 @@ ScriptedImporter:
       y: 4
       width: 130
       height: 56
-    spriteID: a6900d5ec07bf9644b907db0be41270f
+    spriteID: c952bf7fc77e1c649aeffc92254d7e46
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,114 +143,24 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5076923, y: -1.25}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 68
-      width: 130
-      height: 56
-    spriteID: 2b4ff085309b41f4a8a4aa7801bfd8de
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 68}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.5076923, y: -1.1964285}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 132
-      width: 130
-      height: 56
-    spriteID: 02d8f5e9ec030f14fbac895f15737f19
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 132}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.5076923, y: -1.1428571}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 196
-      width: 130
-      height: 56
-    spriteID: 927570706063af542895c1eb8a86c5aa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 196}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 245220086
-    name: exitbutton
+    guid: 418048393
+    name: tryagainbutton
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: tryagainbutton
       frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 34
-        y: 67
-        width: 130
-        height: 56
-      spriteId: a6900d5ec07bf9644b907db0be41270f
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 34
-        y: 70
-        width: 130
-        height: 56
-      spriteId: 2b4ff085309b41f4a8a4aa7801bfd8de
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 34
-        y: 67
-        width: 130
-        height: 56
-      spriteId: 02d8f5e9ec030f14fbac895f15737f19
-    - name: Frame_3
-      frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 34
         y: 64
         width: 130
         height: 56
-      spriteId: 927570706063af542895c1eb8a86c5aa
+      spriteId: c952bf7fc77e1c649aeffc92254d7e46
     linkedCells: []
     parentIndex: -1
   platformSettings:
