@@ -13,8 +13,7 @@ public class Menu : MonoBehaviour
     private bool isFading = false;
 
 
-    [Header("Settings Section")]
-    [SerializeField] private GameObject settingGm;
+    
     
 
     // Load the level with fade effect
@@ -78,8 +77,5 @@ public class Menu : MonoBehaviour
         
     }
 
-    public void Settings(){
-        gameObject.SetActive(false);
-        settingGm.SetActive(true);
-    }
+    
 }
