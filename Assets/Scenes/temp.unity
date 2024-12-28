@@ -12499,6 +12499,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 206236306}
     - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576732018168739202, guid: f4720b12a5b370941a753f93ff9a64a4, type: 3}
       propertyPath: touchJoystick
       value: 
       objectReference: {fileID: 1834401950}
