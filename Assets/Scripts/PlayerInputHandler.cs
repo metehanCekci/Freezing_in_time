@@ -19,7 +19,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string jump = "Jump";
     [Header("Actions Name Reference")]
     [SerializeField] private string sprint = "Sprint";
-    [SerializeField] private string escape = "Escape";
+    //[SerializeField] private string escape = "Escape";
 
     [Header("Movement Joystick")]
     [SerializeField] private TouchJoystick movementJoystick;
@@ -29,7 +29,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction lookAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
-    private InputAction escapeAction;
+    //private InputAction escapeAction;
 
 
 
@@ -41,7 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 LookInput { get; private set; }
     public bool JumpTriggered { get; private set; }
     public float SprintValue { get; private set; }
-    public bool EscapeTriggered { get; private set; }
+    //public bool EscapeTriggered { get; private set; }
 
     private bool isMobile;
 
@@ -62,7 +62,7 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction = playerControls.FindActionMap(mapName).FindAction(look);
         jumpAction = playerControls.FindActionMap(mapName).FindAction(jump);
         sprintAction = playerControls.FindActionMap(mapName).FindAction(sprint);
-        escapeAction = playerControls.FindActionMap(UImapName).FindAction(escape);
+        //escapeAction = playerControls.FindActionMap(UImapName).FindAction(escape);
 
         RegisterInputActions();
 
@@ -72,24 +72,24 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Start()
     {
-        movementJoystick = GameObject.FindWithTag("MoveJoystick").GetComponent<TouchJoystick>();
+        /*movementJoystick = GameObject.FindWithTag("MoveJoystick").GetComponent<TouchJoystick>();
 
         if (movementJoystick != null)
         {
             movementJoystick.gameObject.SetActive(isJoystickActive);
         }
-
+        */
         Application.targetFrameRate = 120;
     }
 
     void Update()
     {
-        if (isJoystickActive)
+        /*if (isJoystickActive)
         {
             Vector2 joystickInput = movementJoystick.GetJoystickInput();
             if (joystickInput.magnitude > 0) MoveInput = joystickInput;
             else MoveInput = Vector2.zero;
-        }
+        }*/
     }
 
     void RegisterInputActions()
@@ -106,7 +106,7 @@ public class PlayerInputHandler : MonoBehaviour
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => SprintValue = 0f;
 
-        escapeAction.performed += context => pauseScript.HandleEscape(context);
+        //escapeAction.performed += context => pauseScript.HandleEscape(context);
     }
 
 
@@ -187,8 +187,8 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.Enable();
         jumpAction.Enable();
         sprintAction.Enable();
-        if (SceneManager.GetActiveScene().buildIndex != 0) escapeAction.Enable();
-        else escapeAction.Disable();
+        /*if (SceneManager.GetActiveScene().buildIndex != 0) escapeAction.Enable();
+        else escapeAction.Disable();*/
     }
 
     void OnDisable()
@@ -197,6 +197,6 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.Disable();
         jumpAction.Disable();
         sprintAction.Disable();
-        escapeAction.Disable();
+        //escapeAction.Disable();
     }
 }

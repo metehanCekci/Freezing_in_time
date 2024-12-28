@@ -3126,6 +3126,42 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 6d2e36e4bd4f224449ea48e5c22d2ae0, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: musicSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fbf35a4695a58494187424542c2c4afa, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a5b4d4d7296a8df4091853ec53c3bdf1, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: da331622d21a09043a084f691cfb01ab, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3127f076731d17c409b8c83cda2cce98, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: sfxSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 13c37989fbe9605438b4a299d1dfefcd, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: musicSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d2e36e4bd4f224449ea48e5c22d2ae0, type: 3}
+    - target: {fileID: 4686142534676664481, guid: 1d2157f414f57ae4da96cf9727f860e6, type: 3}
+      propertyPath: musicSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0a18a8ecf517284c93081c1671e9796, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
