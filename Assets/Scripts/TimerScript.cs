@@ -31,7 +31,7 @@ public class TimerScript : MonoBehaviour
             currentTime += Time.deltaTime;
 
             // Update the timer display
-            timerText.text = "Time: " + currentTime.ToString("F2");
+            timerText.text = currentTime.ToString("F2");
         }
     }
 

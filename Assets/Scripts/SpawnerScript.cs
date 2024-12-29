@@ -17,14 +17,16 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnHeight = 0f;  // Yaratıkların y eksenindeki pozisyonu
 
     private float nextSpawnTime = 0f;  // Bir sonraki yaratık spawn zamanı
-    public float bossSpawnTime = 30f;
+    public float bossSpawnTime = 60f;
+    public float bossNextTime;
     private float timeSinceLastLevelUp = 0f; // Seviye atlamadan geçen süre
     private int level = 0; // Spawner seviyesi
 
     public WarningText wt;
 
     private void Start() {
-        startingInterval = spawnInterval;
+        startingInterval = spawnInterval;   
+        bossNextTime = bossSpawnTime;
     }
 
     void Update()
@@ -48,11 +50,11 @@ public class Spawner : MonoBehaviour
                 clone.transform.position = new Vector3(player.transform.position.x, clone.transform.position.y, 0.0f);    
             clone.SetActive(true);
 
-            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp*1.45f);
-            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp*1.5f);
+            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().hp*1.35f);
+            boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().exp*1.45f);
             boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().timeReward = Mathf.CeilToInt(boss.transform.GetChild(0).GetComponent<EnemyHealthScript>().timeReward*1.2f);
 
-            bossSpawnTime += bossSpawnTime;
+            bossSpawnTime += bossNextTime;
             }
         }
 
@@ -77,8 +79,8 @@ public class Spawner : MonoBehaviour
             EnemyHealthScript enemyHealth = enemy.GetComponent<EnemyHealthScript>();
             if (enemyHealth != null)
             {
-                enemyHealth.hp = Mathf.CeilToInt(enemyHealth.hp*1.45f); // HP'yi iki katına çıkar
-                enemyHealth.exp = Mathf.CeilToInt(enemyHealth.exp*1.5f);
+                enemyHealth.hp = Mathf.CeilToInt(enemyHealth.hp*1.35f); // HP'yi iki katına çıkar
+                enemyHealth.exp = Mathf.CeilToInt(enemyHealth.exp*1.45f);
                 enemyHealth.timeReward = Mathf.CeilToInt(enemyHealth.timeReward*1.2f);
             }
         }

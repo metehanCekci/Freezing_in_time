@@ -85,17 +85,17 @@ public class LevelUpSystem : MonoBehaviour
                 }
                 if (upgrade1.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade1.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
+                    upgrade1.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%30";
                     upgrade1ID = 1;
                 }
                 else if (upgrade2.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade2.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
+                    upgrade2.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%30";
                     upgrade2ID = 1;
                 }
                 else if (upgrade3.GetComponent<TMP_Text>().text == null)
                 {
-                    upgrade3.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%15";
+                    upgrade3.GetComponent<TMP_Text>().text = "SALDIRI HASARI +%30";
                     upgrade3ID = 1;
                 }
             }
@@ -511,15 +511,15 @@ public class LevelUpSystem : MonoBehaviour
     {
         if (ID == 0)
         {
-            player.GetComponent<AnimatedController>().bulletInterval -= 0.08f;
+            player.GetComponent<AnimatedController>().bulletInterval -= 0.09f;
         }
         if (ID == 1)
         {
-            bullet.GetComponent<BulletScript>().damage += 2;
+            bullet.GetComponent<BulletScript>().damage += 3;
         }
         if (ID == 2)
         {
-            player.GetComponent<AnimatedController>().moveSpeed += 2;
+            player.GetComponent<AnimatedController>().moveSpeed += 3;
         }
         if (ID == 3)
         {

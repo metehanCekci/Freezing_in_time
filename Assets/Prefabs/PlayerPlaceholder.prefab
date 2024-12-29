@@ -579,9 +579,7 @@ GameObject:
   - component: {fileID: 7317320542427116244}
   - component: {fileID: 8194222381945648750}
   - component: {fileID: 7576732018168739202}
-  - component: {fileID: 1021831367980161762}
   - component: {fileID: 6862613998767213773}
-  - component: {fileID: 2831456040372875023}
   m_Layer: 7
   m_Name: PlayerPlaceholder
   m_TagString: Player
@@ -659,7 +657,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &7317320542427116244
@@ -766,23 +764,6 @@ MonoBehaviour:
   isGunFlipped: 0
   invincibilityDuration: 2
   DropText: {fileID: 0}
---- !u!114 &1021831367980161762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7723878013538523016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504c0eed7f946e74f9351c12922a3a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
-  currentExperience: 0
-  maxExperience: 0
-  currentLevel: 0
 --- !u!95 &6862613998767213773
 Animator:
   serializedVersion: 7
@@ -805,20 +786,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2831456040372875023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7723878013538523016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504c0eed7f946e74f9351c12922a3a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
-  currentExperience: 0
-  maxExperience: 0
-  currentLevel: 0

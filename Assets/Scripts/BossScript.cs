@@ -18,7 +18,7 @@ public class BossScript : MonoBehaviour
     private Animator animator;
 
 
-    private float moveSpeed = 8f; // Speed at which the left hand follows
+    private float moveSpeed = 10f; // Speed at which the left hand follows
     private float slamDelay = 1f; // Time to wait before the attack is launched
     private float slamDuration = 1f; // Time to wait before the hand returns
     private bool isSlamAttacking = false; // Whether the attack is in progress
@@ -81,9 +81,9 @@ public class BossScript : MonoBehaviour
 
 
         followPlayer = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         followPlayer = false;
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.4f);
 
         if (handIsLeft)
         {

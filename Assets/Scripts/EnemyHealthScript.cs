@@ -56,7 +56,7 @@ public class EnemyHealthScript : MonoBehaviour
                 GameObject clone = Instantiate(explosion);
                 if(roll>= other.gameObject.GetComponent<BulletScript>().criticalChance)
                 clone.GetComponent<ExplosionEffect>().damage += ( (clone.GetComponent<ExplosionEffect>().damage/100) *  other.gameObject.GetComponent<BulletScript>().criticalDamage);
-                clone.transform.position = this.transform.position;
+                clone.transform.position = other.gameObject.transform.position;
                 clone.SetActive(true);
 
             }

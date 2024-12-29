@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using TMPro;
 using Unity.Mathematics;
@@ -101,8 +101,6 @@ public class AnimatedController : MonoBehaviour
     {
         initialGunRotation = gunTransform.rotation;
 
-        DefenceScale = Convert.ToInt16(Math.Round((DamageAmount / 100.0) * 10));
-
         // Joystick input
         Vector2 joystickInput = touchJoystick.GetJoystickInput();
 
@@ -142,7 +140,7 @@ public class AnimatedController : MonoBehaviour
         if (isShooting)
         {
             anim.SetBool("isAttacking", true); // Set the attack animation on
-            gunAnim.SetBool("isAttacking", true);
+            gunAnim.SetBool("isAttacking" , true);
 
             if (Time.time - lastBulletTime >= bulletInterval)
             {
@@ -156,7 +154,7 @@ public class AnimatedController : MonoBehaviour
         else
         {
             anim.SetBool("isAttacking", false); // Set the attack animation off
-            gunAnim.SetBool("isAttacking", false);
+            gunAnim.SetBool("isAttacking" , false);
 
             // Flip the sprite back based on movement
             FlipSpriteBasedOnMovement(horizontalInput);
@@ -179,7 +177,7 @@ public class AnimatedController : MonoBehaviour
         if (damageBoostTimer >= damageBoostInterval)
         {
             damageBoostTimer = 0f; // Reset the timer
-            DamageAmount = Mathf.CeilToInt(DamageAmount * 2.5f);
+            DamageAmount = Mathf.CeilToInt(DamageAmount * 1.5f);
         }
 
         // Update gun rotation for desktop
@@ -201,7 +199,7 @@ public class AnimatedController : MonoBehaviour
     // New method to make the player face the mouse while attacking
     private void FaceMouseWhileAttacking()
     {
-        if (gunAnim.GetBool("isAttacking"))
+        if (anim.GetBool("isAttacking"))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Ensure z position is 0 for 2D
@@ -311,6 +309,9 @@ public class AnimatedController : MonoBehaviour
 
             float angle = Mathf.Atan2(joystickInput.y, joystickInput.x) * Mathf.Rad2Deg;
             gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            anim.SetBool("isAttacking",true);
+            gunAnim.SetBool("isAttacking",true);
+
 
             if (joystickInput.x < 0)
             {
@@ -329,6 +330,11 @@ public class AnimatedController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            anim.SetBool("isAttacking",false);
+            gunAnim.SetBool("isAttacking",false);
+        }
     }
 
     // Bullet spawning function
@@ -340,8 +346,10 @@ public class AnimatedController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.SetActive(true);
             bullet.transform.localScale = new Vector3(3f, 3f, 1f);
+            Destroy(bullet, 5);
             SFXPlayer.gameObject.GetComponent<SFXScript>().PlayGunShot();
             gunAnim.SetTrigger("isAttack");
+            
 
             // If DoubleShot is active, spawn another bullet with a delay
             if (doubleShot)
@@ -479,53 +487,53 @@ public class AnimatedController : MonoBehaviour
 
     void TakeDamage()
     {
-        // Play damage sound
-        SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
-        timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
 
-        /*if (timeAmount > (DamageAmount - ((DamageAmount / 100) * DefenceScale)))
+    // Play damage sound
+    SFXPlayer.gameObject.GetComponent<SFXScript>().PlayDamage();
+
+    // Calculate the new timeAmount after damage is applied
+    float damageTaken = (DamageAmount - ((DamageAmount / 100) * DefenceScale));
+    Debug.Log(damageTaken);
+    // Ensure that the damage never increases timeAmount
+    float newTimeAmount = timeAmount - damageTaken;
+
+    // If the new timeAmount would be higher than the current, just leave it as is
+    if (newTimeAmount > timeAmount)
+    {
+        newTimeAmount = timeAmount;
+    }
+
+    // Apply the calculated damage
+    timeAmount = newTimeAmount;
+
+    // Show damage on the screen
+    GameObject clone = Instantiate(DropText);
+    clone.transform.position = DropText.transform.position;
+    clone.transform.parent = DropText.transform.parent;
+    clone.SetActive(true);
+    clone.GetComponent<TMP_Text>().color = Color.red;
+    clone.GetComponent<TMP_Text>().text = damageTaken.ToString();
+    
+    // Check if player has no bullets left
+    if (timeAmount <= 0)
+    {
+        // If resurrection is available, cancel the death
+        if (resurrection > 0)
         {
-            timeAmount -= (DamageAmount - ((DamageAmount / 100) * DefenceScale));
-        }
-        else if (timeAmount > 0 && timeAmount <= 1)
-        {
-            timeAmount--;
+            UseResurrection();
         }
         else
         {
-            timeAmount = 1f;
-
-        }*/
-
-
-
-
-        // Show damage on the screen
-        GameObject clone = Instantiate(DropText);
-        clone.transform.position = DropText.transform.position;
-        clone.transform.parent = DropText.transform.parent;
-        clone.SetActive(true);
-        clone.GetComponent<TMP_Text>().color = Color.red;
-        clone.GetComponent<TMP_Text>().text = DamageAmount.ToString();
-
-        // Check if player has no bullets left
-        if (timeAmount <= 0)
-        {
-            // If resurrection is available, cancel the death
-            if (resurrection > 0)
+            if (!isDead)
             {
-                UseResurrection();
-            }
-            else
-            {
-                if (!isDead)
-                {
-                    deathMenu.SetActive(true);
-                    Time.timeScale = 0;
-                    isDead = true;
-                }
+                deathMenu.SetActive(true);
+                Time.timeScale = 0;
+                isDead = true;
             }
         }
+    }
+
+
     }
     private void UseResurrection()
     {

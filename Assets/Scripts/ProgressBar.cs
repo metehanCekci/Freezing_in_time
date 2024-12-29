@@ -28,7 +28,7 @@ public class ProgressBar : MonoBehaviour
         if (maximum > 0)
         {
             float fillAmount = (float)current / (float)maximum;
-            mask.fillAmount = fillAmount;
+           mask.fillAmount = fillAmount;
             Debug.Log("OZAN");
         }
         else
