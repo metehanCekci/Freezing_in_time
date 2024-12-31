@@ -177,7 +177,7 @@ public class AnimatedController : MonoBehaviour
         if (damageBoostTimer >= damageBoostInterval)
         {
             damageBoostTimer = 0f; // Reset the timer
-            DamageAmount = Mathf.CeilToInt(DamageAmount * 1.5f);
+            DamageAmount = Mathf.CeilToInt(DamageAmount * 2);
         }
 
         // Update gun rotation for desktop
